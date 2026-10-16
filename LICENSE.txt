@@ -1,0 +1,70 @@
+Lexicora Website License
+Version 1.0 — 2026
+
+Copyright (c) 2025-2026 Lexicora / Timothy (@tgmaurer). All rights reserved.
+
+This is a proprietary license. The source of the Website is published so that it can be read, not so that it can be reused. Except as Section 2 allows, no permission is granted to copy, modify, publish, distribute or create derivative works of the Website, in whole or in part.
+
+0. Definitions
+"Website" means everything covered by this license: the contents of the lexicora.github.io repository and the website built from it, at lexicora.github.io or any other address Lexicora serves it from. That includes its HTML, CSS and JavaScript, its text, its page layouts and visual design, its images and graphics, and the scripts and templates used to produce them, except what Section 4 names as licensed separately.
+
+"You" means the individual or organization using the Website.
+
+"Contribution" means any work you intentionally submit for inclusion in the Website, by pull request, patch, issue attachment or otherwise.
+
+1. Ownership
+The Website is owned by Lexicora and protected by copyright and other laws. This license transfers no ownership. All rights not expressly granted here are reserved.
+
+2. What You May Do
+You may, without asking:
+(a) visit and read the Website, and let your browser download, cache and display it as browsers ordinarily do;
+(b) link to any page of the Website;
+(c) quote short excerpts of its text, attributed to Lexicora with a link to the page, for commentary, review, reporting, teaching or research;
+(d) show pages of the Website in screenshots or recordings when writing or speaking about Lexicora;
+(e) read and study the source, and report problems or suggest changes through the repository's issues and pull requests;
+(f) view and fork the repository on GitHub, as GitHub's Terms of Service allow every GitHub user for a public repository. A fork is a copy within GitHub for that purpose only. It gives no right to use, publish or host the Website, or any part of it, anywhere else.
+
+3. What You May Not Do
+Unless Lexicora has agreed in writing, you may not:
+(a) copy, reproduce or host the Website or a substantial part of it, including mirroring it at another address;
+(b) reuse its code, design, layout, text or images in another website, product or document, modified or not, commercial or not;
+(c) create derivative works of it, including templates or themes based on it;
+(d) present the Website, or anything derived from it, in a way that suggests it comes from or is endorsed by Lexicora when it does not;
+(e) use the Website's content to train or fine-tune machine learning models, or include it in datasets built for that purpose.
+
+To ask for permission, contact:
+Email: hello@tgmaurer.dev
+
+4. Content Licensed Separately
+Parts of the Website are not covered by this license, but by their own:
+- Material from the Lexicora Extension remains under the Lexicora Extension License, a copy of which is in assets/LICENSE.txt. That material is the Lexicora logos, the screenshots of the extension's interface and the product shots cut from them, and the texts of the extension's license and privacy policy mirrored on the Website.
+- The fonts Wix Madefor Text and JetBrains Mono are under the SIL Open Font License 1.1. Their licenses are in assets/fonts/.
+- The Chrome, Edge, Firefox and GitHub glyphs are from Simple Icons, under CC0 1.0. The brands they show are trademarks of their owners.
+- The interface icons are from Lucide, under the ISC License, which is in assets/icons/ui/LICENSE.txt.
+Nothing in this license alters those terms, and nothing in those terms extends to the rest of the Website.
+
+5. Contributions
+Unless you state otherwise in writing when you submit it, you grant Lexicora a perpetual, worldwide, irrevocable, royalty-free right to use, modify, sublicense and distribute each Contribution under any terms, including this license and commercial ones. You confirm that you are entitled to grant this. Submitting a Contribution gives you no further rights in the Website.
+
+6. Trademarks
+The names Lexicora, Lexicora Extension, and associated branding are trademarks of Lexicora. This license grants no right to use them, except for ordinary descriptive reference to Lexicora and the attribution Section 2 asks for.
+
+7. Disclaimer of Warranty
+THE WEBSITE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY AND NONINFRINGEMENT. The Website describes the Lexicora Extension in good faith; the extension itself is governed by its own license and privacy policy.
+
+8. Limitation of Liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WEBSITE OR THE USE OR OTHER DEALINGS IN THE WEBSITE.
+
+9. Scope
+This license applies only to the lexicora.github.io repository and the website built from it. The Lexicora Extension is licensed under the Lexicora Extension License. Other Lexicora products may use different licensing terms.
+
+Each version of the Website is licensed under the license text published with it. Lexicora may publish later versions under different terms; doing so does not change the terms of a version you already received.
+
+10. Termination
+Any use of the Website beyond what this license permits automatically terminates the permissions it grants you. If the violation is one that can be put right and you do so within 30 days of becoming aware of it, your permissions are reinstated, unless Lexicora has already terminated them in writing.
+
+11. Severability
+If any provision of this license is held unenforceable, it is to be applied as far as it can be, or severed if it cannot, and the remaining provisions stay in force.
+
+12. Governing Law
+This license is governed by the laws of Switzerland, without regard to its conflict of law rules.

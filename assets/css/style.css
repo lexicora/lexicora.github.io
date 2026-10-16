@@ -55,6 +55,7 @@
   --page-width: 72rem;
   --prose-width: 46rem;
   --gutter: 1rem;
+  --header-height: 3.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,7 +94,9 @@
 }
 
 html {
-  scroll-padding-top: 5rem;
+  /* A jump to #section stops right below the sticky header, so the section
+     starts at its own top edge, with nothing of the one before showing. */
+  scroll-padding-top: var(--header-height);
   -webkit-text-size-adjust: 100%;
   /* Keeps the page the same width on every page. Without it, a page too short
      to scroll gains a scrollbar's width and shifts sideways mid-transition. */
@@ -105,7 +108,11 @@ html {
    width, which suits a page better than the extension's thin one.
    `scrollbar-color` is inherited, so scrollable boxes follow. The
    ::-webkit-scrollbar rules serve Safari before it supported the standard
-   properties. */
+   properties.
+
+   Switched off for now in favour of the browser's own scrollbar. To bring
+   it back, remove the comment markers around the rules below. */
+/*
 html {
   scrollbar-color: #adadad transparent;
 }
@@ -135,6 +142,7 @@ html {
     background-color: #868b8f;
   }
 }
+*/
 
 body {
   margin: 0;
@@ -354,7 +362,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: 1rem;
-  min-height: 3.75rem;
+  min-height: var(--header-height);
 }
 
 .brand {
@@ -508,7 +516,7 @@ kbd {
 
 /* A soft light behind the headline and the screenshot, nothing more. */
 .hero {
-  padding-block: 4.5rem 0;
+  padding-block: 4.5rem 3.5rem;
   background:
     radial-gradient(60rem 32rem at 50% 0, var(--glow), transparent 70%) no-repeat;
   text-align: center;
@@ -671,8 +679,21 @@ kbd {
 
 /* ---------- Sections ---------- */
 
+/* Half the space between sections sits above each, half below, so a jump to
+   a section shows its own top padding rather than the end of the one before.
+   The last section leaves its bottom to the footer's margin. */
 .section {
-  padding-block: 7rem 0;
+  padding-block: 3.5rem;
+}
+
+.section:last-child {
+  padding-bottom: 0;
+}
+
+/* Headings and releases that are jumped to (#changes, #v1.1.0) keep a little
+   air below the header. */
+.prose [id] {
+  scroll-margin-top: 1.25rem;
 }
 
 .section-head {
@@ -1498,7 +1519,7 @@ kbd {
   }
 
   .hero {
-    padding-top: 2.75rem;
+    padding-block: 2.75rem 2.25rem;
   }
 
   .hero .button-row .button {
@@ -1514,7 +1535,11 @@ kbd {
   }
 
   .section {
-    padding-top: 4.5rem;
+    padding-block: 2.25rem;
+  }
+
+  .section:last-child {
+    padding-bottom: 0;
   }
 
   .feature + .feature {

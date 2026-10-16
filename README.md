@@ -13,7 +13,9 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 | `index.html` | Landing page: hero, the four steps (capture, organise, find, keep) each beside the screen it happens on, details, shortcuts, privacy, principles, roadmap, install |
 | `privacy/` | The extension's privacy policy, mirrors `PRIVACY.md` in the extension repository |
 | `privacy/website/` | This website's own privacy policy: no cookies or analytics, GitHub Pages' IP logging, the script's session storage. Written for the site, not mirrored |
-| `license/` | Lexicora Extension License, mirrors `LICENSE.txt` |
+| `license/` | Lexicora Extension License, mirrors `LICENSE.txt` in the extension repository |
+| `license/website/` | Lexicora Website License, the proprietary licence for this site; shows `LICENSE.txt` in this repository |
+| `LICENSE.txt` | The Lexicora Website License. It names what is licensed separately: extension material (logos, screenshots, the mirrored legal texts), fonts, icons |
 | `changelog/` | Release notes, mirrors `src/constants/changelog.ts` |
 | `screenshots/1/` to `5/` | One viewer page per screenshot; back and previous/next sit at the top right |
 | `404.html` | Not-found page (GitHub Pages serves it automatically) |
@@ -37,7 +39,7 @@ Then open <http://localhost:8000>. Paths are root-relative, so the site needs to
 
 ## Keeping it in step with the extension
 
-The privacy policy, licence, changelog and screenshot captions are copies. When `PRIVACY.md`, `LICENSE.txt` or the changelog change in the extension repository, update the matching page here (and `assets/LICENSE.txt`). Store URLs appear in `index.html` (hero, install section) and nowhere else.
+The privacy policy, extension licence, changelog and screenshot captions are copies. The website's own licence and privacy policy are not: when `LICENSE.txt` here changes, update `license/website/` to match, and when the site starts keeping or sending anything new (a script that stores more, analytics, another host), update `privacy/website/` first. When `PRIVACY.md`, `LICENSE.txt` or the changelog change in the extension repository, update the matching page here (and `assets/LICENSE.txt`). Store URLs appear in `index.html` (hero, install section) and nowhere else.
 
 On a release, `index.html` names the version in three places: the "New in" pill (which links to the release's changelog entry), the line under the store buttons, and `softwareVersion` in the JSON-LD block.
 
