@@ -20,9 +20,9 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 | `screenshots/1/` to `5/` | One viewer page per screenshot; back and previous/next sit at the top right |
 | `404.html` | Not-found page (GitHub Pages serves it automatically) |
 | `assets/css/style.css` | All styling |
-| `assets/js/site.js` | The only script: the homepage logo scrolls to the top, and the screenshot viewer's Back goes back in history (so the homepage comes back exactly where it was), Previous and Next replace the viewer page, and ←, → and Esc work. It keeps one note in `sessionStorage`, described in the website privacy policy; change that page if the script starts keeping anything else |
+| `assets/js/site.js` | The only script: the homepage logo scrolls to the top, and the screenshot viewer's Back goes back in history in one step (`history.go(-depth)`, each viewer page keeping its depth in `history.state`), so the homepage comes back exactly where it was. Previous and Next stay plain links: navigating from script (`location.replace`) made the view transition start from a white frame. ←, → and Esc work too. It keeps one note in `sessionStorage`, described in the website privacy policy; change that page if the script starts keeping anything else |
 | `assets/img/product/` | The landing page's product shots: the browser window or side panel cut out of each store screenshot, without its headline. AVIF, JPEG XL and JPEG, made by `scripts/product-shots.sh` |
-| `assets/img/screenshots/` | The store screenshots themselves, from `docs/store/screenshots` at 800, 1600 and 2400 px, as JPEG XL with a JPEG fallback. Used by the viewer pages |
+| `assets/img/screenshots/` | The store screenshots themselves, from `docs/store/screenshots` at 800, 1600 and 2400 px, as AVIF, JPEG XL and JPEG. Used by the viewer pages, which preload the AVIF and ask Chrome and Edge (speculation rules) to prerender the neighbouring viewer pages; the homepage prerenders a viewer page when a screenshot is hovered |
 | `assets/img/og.jpg` | The 1200 × 630 social preview card, rendered from `scripts/og.html` |
 | `assets/icons/` | Chrome, Edge, Firefox and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0). The brands are trademarks of their owners |
 | `assets/icons/ui/` | Interface icons from [Lucide](https://lucide.dev) (ISC, licence alongside), the set the extension uses, exported from its `lucide-react` |
@@ -61,6 +61,7 @@ The crop boxes are at the bottom of the script. They assume the current layout o
 
 ```sh
 cjxl 2.png assets/img/screenshots/2-2400.jxl -d 1.0 -e 7   # also at 1600 and 800 px, resized first
+avifenc -q 62 -s 4 -y 444 2.png assets/img/screenshots/2-2400.avif   # likewise
 sips -s format jpeg -s formatOptions 82 -Z 1600 2.png --out assets/img/screenshots/2-1600.jpg
 ```
 

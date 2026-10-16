@@ -17,8 +17,9 @@
   <link rel="preload" href="/assets/fonts/wix-madefor-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/site.js" defer></script>
+  <script type="speculationrules">{"prerender": [{"urls": ["/screenshots/1/", "/screenshots/3/"], "eagerness": "immediate"}]}</script>
   <link rel="expect" href="#main" blocking="render">
-  <link rel="preload" as="image" type="image/jxl" imagesrcset="/assets/img/screenshots/2-800.jxl 800w, /assets/img/screenshots/2-1600.jxl 1600w, /assets/img/screenshots/2-2400.jxl 2400w" imagesizes="(min-width: 64rem) 64rem, 100vw" fetchpriority="high" blocking="render">
+  <link rel="preload" as="image" type="image/avif" imagesrcset="/assets/img/screenshots/2-800.avif 800w, /assets/img/screenshots/2-1600.avif 1600w, /assets/img/screenshots/2-2400.avif 2400w" imagesizes="(min-width: 64rem) 64rem, 100vw" fetchpriority="high">
 </head>
 <body>
   <a class="skip-link" href="#main" draggable="false">Skip to content</a>
@@ -50,6 +51,7 @@
       <figure style="margin:0">
         <div class="shot">
           <picture>
+            <source type="image/avif" srcset="/assets/img/screenshots/2-800.avif 800w, /assets/img/screenshots/2-1600.avif 1600w, /assets/img/screenshots/2-2400.avif 2400w" sizes="(min-width: 64rem) 64rem, 100vw">
             <source type="image/jxl" srcset="/assets/img/screenshots/2-800.jxl 800w, /assets/img/screenshots/2-1600.jxl 1600w, /assets/img/screenshots/2-2400.jxl 2400w" sizes="(min-width: 64rem) 64rem, 100vw">
             <img fetchpriority="high" decoding="sync" src="/assets/img/screenshots/2-1600.jpg" srcset="/assets/img/screenshots/2-800.jpg 800w, /assets/img/screenshots/2-1600.jpg 1600w, /assets/img/screenshots/2-2400.jpg 2400w" sizes="(min-width: 64rem) 64rem, 100vw" width="1600" height="1200" alt="A React Router docs page captured into the editor, with its headings, lists, callout and code block">
           </picture>
