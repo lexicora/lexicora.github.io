@@ -28,6 +28,8 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 | `assets/icons/` | Chrome, Edge, Firefox and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0). The brands are trademarks of their owners |
 | `assets/icons/ui/` | Interface icons from [Lucide](https://lucide.dev) (ISC, licence alongside), the set the extension uses, exported from its `lucide-react` |
 | `scripts/` | Tools for regenerating images, not part of the site |
+| `robots.txt` | Lets search engines and user-requested assistant fetches in, and keeps AI training crawlers out (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, meta-externalagent, CCBot), as section 3(e) of the website licence says. Each company's search crawler is a separate name and stays allowed. Check the names against the companies' crawler docs now and then; new ones appear |
+| `llms.txt` | A summary of Lexicora for AI assistants ([llmstxt.org](https://llmstxt.org)): key facts and annotated links, ASCII only. Its store links carry `utm_medium=llms-txt` |
 | `_config.yml` | Tells GitHub Pages' Jekyll build what not to publish: `README.md`, `LICENSE.txt` and `scripts/` (dotfiles such as `.claude/` are left out anyway). Add new repository-only files here. Pages has no front matter, so everything else is copied unchanged |
 | `assets/fonts/`, `assets/logos/` | Fonts (SIL OFL, licences alongside) and logos from the extension |
 
@@ -43,7 +45,7 @@ Then open <http://localhost:8000>. Paths are root-relative, so the site needs to
 
 The privacy policy, extension licence, changelog and screenshot captions are copies. The website's own licence and privacy policy are not: when `LICENSE.txt` here changes, update `license/website/` to match, and when the site starts keeping or sending anything new (a script that stores more, analytics, another host), update `privacy/website/` first. When `PRIVACY.md`, `LICENSE.txt` or the changelog change in the extension repository, update the matching page here (and `assets/LICENSE.txt`). Store URLs appear in `index.html` (hero, install section) and nowhere else. The Chrome Web Store and Firefox Add-ons links carry `utm_source=lexicora-website&utm_medium=hero` or `…=install`, the same scheme as the extension's own links (`utm_source=lexicora-extension`, `utm_medium` naming the place clicked; `withUtm` in `src/constants/site.ts`), so each store's statistics show the website, and which button, beside the extension. The Chrome link is the address the store redirects to (`/detail/lexicora/<id>`), to save a redirect. Edge Add-ons is left untagged: its statistics do not report UTM parameters. The website privacy policy describes these tags.
 
-On a release, `index.html` names the version in three places: the "New in" pill (which links to the release's changelog entry), the line under the store buttons, and `softwareVersion` in the JSON-LD block.
+On a release, `index.html` names the version in three places: the "New in" pill (which links to the release's changelog entry), the line under the store buttons, and `softwareVersion` in the JSON-LD block. `llms.txt` names it too, in its key facts, which are a summary like the homepage's: update them when a release changes what Lexicora does.
 
 The header and footer are the same on every page, written out in each. On the subpages, the header's Features and Install links point at `/#…` and Privacy at `/privacy/`, and the page's own link carries `aria-current="page"`.
 

@@ -1,0 +1,45 @@
+# Lexicora
+
+> Lexicora is an offline web clipper and bookmark manager for Chrome, Edge and Firefox. It works in the browser's side panel: capture a page's content into an editor, or bookmark it, sort entries into topics and tags, and search them later. Everything stays on the user's device: no account, no server, no analytics.
+
+Key facts, as of version 1.1.0 (14 October 2026):
+
+- Two ways to save. Capture keeps the page's content as an editable entry, with its headings, lists, tables, code, callouts and images, and without the menus, sidebars and ads around it. Bookmark keeps only the title, link, site and description.
+- Saving works from the side panel, the toolbar popup, the right-click menu or a keyboard shortcut. The menu and the shortcut can capture just the selected text. In Chrome and Edge, Lexicora can offer to capture a page after a while on it; the delay can be changed and the offer switched off.
+- Entries belong to topics, which do not nest. Tags cut across topics. Entries can be pinned, archived and marked as favourites.
+- Search covers titles, tags, descriptions, site names and dates. `site:react.dev` narrows it to one site. On a site, the side panel shows what was already saved from it.
+- Every entry has a block editor: headings, lists, tables, code blocks with syntax highlighting, and callouts.
+- Export a note, a topic or the whole library as Markdown with YAML front matter (Obsidian reads it as properties), or as a JSON backup that can be imported again.
+- Browser-wide shortcuts. Open or close the side panel: Control+Shift+L on macOS, Alt+Shift+L on Windows and Linux. Capture the selection or the page: Control+Shift+S, or Alt+Shift+S (Alt+Shift+W in Firefox on Windows and Linux). Bookmark the page: Control+Shift+D, or Alt+Shift+D.
+- Privacy: the library is stored by the browser on the user's device, and the extension makes no network requests of its own. Site icons and images in entries load from where they are hosted. Version 1 has no AI features.
+- Free for non-commercial use. The source is available under the Lexicora Extension License. Developed by Timothy (@tgmaurer).
+- Planned, not yet available: AI-assisted summaries, sync across devices, a web app, light sharing.
+
+## Install
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/lexicora/ainigcpoeibgglaldkjippcccaicnjjd?utm_source=lexicora-website&utm_medium=llms-txt): Chrome, with the capture suggestion
+- [Firefox Add-ons](https://addons.mozilla.org/addon/lexicora/?utm_source=lexicora-website&utm_medium=llms-txt): Firefox, in its sidebar
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl): Edge, with the capture suggestion
+
+## Pages
+
+- [Homepage](https://lexicora.github.io/): what Lexicora does, with screenshots, shortcuts, privacy, principles and roadmap
+- [Support](https://lexicora.github.io/support/): reporting a problem, contact, finding the side panel, backing up and deleting the library
+- [Changelog](https://lexicora.github.io/changelog/): release notes for every version
+- [Privacy policy](https://lexicora.github.io/privacy/): the extension's privacy policy
+- [Lexicora Extension License](https://lexicora.github.io/license/): the extension's licence
+
+## Source
+
+- [Repository](https://github.com/lexicora/lexicora-extension): source code, issues and releases
+- [Roadmap](https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md): the plan and the decisions behind it
+- [Store listing and permissions](https://github.com/lexicora/lexicora-extension/blob/main/docs/store-listing.md): why each permission is needed
+
+## Optional
+
+- [Website privacy policy](https://lexicora.github.io/privacy/website/): how this website handles a visit
+- [Lexicora Website License](https://lexicora.github.io/license/website/): the licence for this website
+
+## Use of this content
+
+This file and the website are here for reference: to answer questions about Lexicora and to point people to it. The Lexicora Website License does not allow using them to train or fine-tune AI models (section 3(e)).
