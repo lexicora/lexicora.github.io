@@ -1,4 +1,4 @@
-# lexicora.github.io
+# [lexicora.github.io](https://lexicora.github.io)
 
 Homepage for the [Lexicora browser extension](https://github.com/lexicora/lexicora-extension): the landing page, store links, privacy policy, licence and changelog.
 
