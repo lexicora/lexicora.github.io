@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- The social preview card, assets/img/og.jpg (1200 x 630). Rendered by
+     headless Chrome, see README.md. Not part of the site. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: "Wix Madefor Text Variable";
+    font-weight: 400 800;
+    src: url("../assets/fonts/wix-madefor-text-latin-wght-normal.woff2") format("woff2-variations");
+  }
+
+  html, body {
+    margin: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+
+  body {
+    position: relative;
+    background:
+      radial-gradient(700px 420px at 0% 0%, oklch(0.5 0.15 262 / 35%), transparent 70%),
+      oklch(0.13 0.028 261.692);
+    color: oklch(0.985 0.002 247.839);
+    font-family: "Wix Madefor Text Variable", sans-serif;
+  }
+
+  .text {
+    position: absolute;
+    left: 72px;
+    top: 84px;
+    width: 470px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .mark {
+    width: 48px;
+    height: 48px;
+    background: currentColor;
+    -webkit-mask: url("../assets/logos/Lexicora_standard_no-bg.svg") center / contain no-repeat;
+  }
+
+  h1 {
+    margin: 88px 0 0;
+    font-size: 76px;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  p {
+    margin: 28px 0 0;
+    color: oklch(0.81 0.022 261.325);
+    font-size: 27px;
+    line-height: 1.4;
+  }
+
+  /* The capture shot, anchored right so the side panel is what shows, and
+     fading into the page on the left. */
+  .crop {
+    position: absolute;
+    left: 590px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    -webkit-mask: linear-gradient(to right, transparent, #000 140px);
+  }
+
+  .shot {
+    position: absolute;
+    right: 48px;
+    top: 72px;
+    width: 1360px;
+    padding: 6px;
+    border: 1px solid oklch(1 0 0 / 14%);
+    border-radius: 22px;
+    background: oklch(0.21 0.034 264.665 / 70%);
+    box-shadow: 0 40px 80px oklch(0 0 0 / 60%);
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div class="brand"><span class="mark"></span>Lexicora</div>
+    <h1>Keep what you read.</h1>
+    <p>An offline web clipper in your browser's side panel. Chrome, Edge and Firefox.</p>
+  </div>
+  <div class="crop"><div class="shot"><img src="../assets/img/product/capture-2320.jpg" alt=""></div></div>
+</body>
+</html>

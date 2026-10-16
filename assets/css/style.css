@@ -2,7 +2,9 @@
    Tokens are taken from the extension's own stylesheet
    (lexicora-extension/src/assets/styles/globals.css) so the site and the
    side panel read as one product. Light and dark follow the system, as the
-   extension's "system" theme does. */
+   extension's "system" theme does. The one addition is --accent, a blue from
+   the extension's ring colour, kept to small marks: step numbers, ticks, the
+   "new" tag. */
 
 @font-face {
   font-family: "Wix Madefor Text Variable";
@@ -15,7 +17,7 @@
 @font-face {
   font-family: "JetBrains Mono Variable";
   font-style: normal;
-  font-display: block;
+  font-display: swap;
   font-weight: 100 800;
   src: url("/assets/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations");
 }
@@ -25,6 +27,7 @@
 
   --radius: 0.625rem;
   --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
 
   --background: oklch(0.955 0.004 264.5);
   --foreground: oklch(0.13 0.028 261.692);
@@ -36,10 +39,15 @@
   --primary: oklch(0.21 0.034 264.665);
   --primary-foreground: oklch(0.985 0.002 247.839);
   --primary-hover: oklch(0.3 0.04 264.665);
+  --accent: oklch(0.5 0.16 262);
   --code: oklch(50.153% 0.19988 28.587);
   --ring: oklch(0.55 0.1 262);
-  --shadow: 0 1px 2px oklch(0.13 0.03 262 / 8%), 0 8px 24px oklch(0.13 0.03 262 / 8%);
-  --shadow-lg: 0 2px 4px oklch(0.13 0.03 262 / 8%), 0 24px 60px oklch(0.13 0.03 262 / 18%);
+  --glow: oklch(0.62 0.14 262 / 22%);
+  --shadow: 0 1px 2px oklch(0.13 0.03 262 / 6%), 0 4px 16px oklch(0.13 0.03 262 / 6%);
+  --shadow-lg: 0 2px 4px oklch(0.13 0.03 262 / 6%), 0 24px 64px -12px oklch(0.13 0.03 262 / 28%);
+
+  /* The screenshots are of the dark theme, so their frame is always dark. */
+  --shot-background: oklch(0.13 0.028 261.692);
 
   --font-sans: "Wix Madefor Text Variable", system-ui, "Segoe UI", -apple-system, Avenir, Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -61,10 +69,18 @@
     --primary: oklch(0.928 0.006 264.531);
     --primary-foreground: oklch(0.21 0.034 264.665);
     --primary-hover: oklch(0.985 0.002 247.839);
+    --accent: oklch(0.76 0.11 262);
     --code: oklch(65.34% 0.183 23.68);
     --ring: oklch(0.7 0.1 262);
+    --glow: oklch(0.55 0.15 262 / 24%);
     --shadow: 0 1px 2px oklch(0 0 0 / 30%), 0 8px 24px oklch(0 0 0 / 25%);
-    --shadow-lg: 0 2px 4px oklch(0 0 0 / 30%), 0 24px 60px oklch(0 0 0 / 50%);
+    --shadow-lg: 0 2px 4px oklch(0 0 0 / 30%), 0 24px 48px -24px oklch(0 0 0 / 60%);
+  }
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --gutter: 1.5rem;
   }
 }
 
@@ -90,8 +106,7 @@ html {
    `scrollbar-color` is inherited, so scrollable boxes follow. The
    ::-webkit-scrollbar rules serve Safari before it supported the standard
    properties. */
-html,
-.table-wrap {
+html {
   scrollbar-color: #adadad transparent;
 }
 
@@ -108,8 +123,7 @@ html,
 }
 
 @media (prefers-color-scheme: dark) {
-  html,
-  .table-wrap {
+  html {
     scrollbar-color: #4d5359 transparent;
   }
 
@@ -172,7 +186,7 @@ a:hover {
 code,
 kbd {
   font-family: var(--font-mono);
-  font-size: 0.875em;
+  font-size: 0.85em;
 }
 
 code {
@@ -184,17 +198,30 @@ code {
 
 kbd {
   display: inline-block;
-  padding: 0.1em 0.5em;
+  min-width: 1.9em;
+  padding: 0.1em 0.45em;
   border: 1px solid var(--border);
   border-bottom-width: 2px;
   border-radius: 0.4rem;
   background: var(--card);
+  color: var(--foreground);
+  line-height: 1.5;
+  text-align: center;
   white-space: nowrap;
 }
 
 .container {
   width: min(100% - 2 * var(--gutter), var(--page-width));
   margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .skip-link {
@@ -212,43 +239,55 @@ kbd {
   top: 0.75rem;
 }
 
-/* ---------- Logo ---------- */
+/* ---------- Logo and icons ---------- */
 
-/* The mark is painted with the text colour, so it follows light and dark. */
-.logo-mark {
-  display: inline-block;
-  flex: none;
-  width: 1.75rem;
-  height: 1.75rem;
-  background: currentColor;
-  -webkit-mask: url("/assets/logos/Lexicora_standard_no-bg.svg") center / contain no-repeat;
-  mask: url("/assets/logos/Lexicora_standard_no-bg.svg") center / contain no-repeat;
-}
-
-/* ---------- Browser icons ---------- */
-
-/* Painted with the text colour, like the logo. From Simple Icons (CC0). */
+/* The logo and every icon are painted with the text colour through a mask,
+   so they follow light and dark. Browser and GitHub glyphs are from Simple
+   Icons (CC0); the rest are Lucide (ISC), the set the extension uses. */
+.logo-mark,
 .icon {
   display: inline-block;
   flex: none;
-  width: 1.25em;
-  height: 1.25em;
   background: currentColor;
   -webkit-mask: var(--icon) center / contain no-repeat;
   mask: var(--icon) center / contain no-repeat;
 }
 
-.icon-chrome {
-  --icon: url("/assets/icons/chrome.svg");
+.logo-mark {
+  --icon: url("/assets/logos/Lexicora_standard_no-bg.svg");
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
-.icon-edge {
-  --icon: url("/assets/icons/edge.svg");
+.logo-mark-large {
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
-.icon-firefox {
-  --icon: url("/assets/icons/firefox.svg");
+.icon {
+  width: 1.25em;
+  height: 1.25em;
 }
+
+.icon-chrome { --icon: url("/assets/icons/chrome.svg"); }
+.icon-edge { --icon: url("/assets/icons/edge.svg"); }
+.icon-firefox { --icon: url("/assets/icons/firefox.svg"); }
+.icon-github { --icon: url("/assets/icons/github.svg"); }
+.icon-arrow-right { --icon: url("/assets/icons/ui/arrow-right.svg"); }
+.icon-arrow-up-right { --icon: url("/assets/icons/ui/arrow-up-right.svg"); }
+.icon-bug { --icon: url("/assets/icons/ui/bug.svg"); }
+.icon-check { --icon: url("/assets/icons/ui/check.svg"); }
+.icon-copy { --icon: url("/assets/icons/ui/copy.svg"); }
+.icon-eye-off { --icon: url("/assets/icons/ui/eye-off.svg"); }
+.icon-file-down { --icon: url("/assets/icons/ui/file-down.svg"); }
+.icon-map { --icon: url("/assets/icons/ui/map.svg"); }
+.icon-pen-line { --icon: url("/assets/icons/ui/pen-line.svg"); }
+.icon-scan-text { --icon: url("/assets/icons/ui/scan-text.svg"); }
+.icon-server-off { --icon: url("/assets/icons/ui/server-off.svg"); }
+.icon-sun-moon { --icon: url("/assets/icons/ui/sun-moon.svg"); }
+.icon-text-search { --icon: url("/assets/icons/ui/text-search.svg"); }
+.icon-timer { --icon: url("/assets/icons/ui/timer.svg"); }
+.icon-user-x { --icon: url("/assets/icons/ui/user-round-x.svg"); }
 
 /* ---------- Page transitions ---------- */
 
@@ -299,46 +338,6 @@ kbd {
   }
 }
 
-/* ---------- Screenshot viewer ---------- */
-
-.viewer {
-  padding-block: 2rem 0;
-}
-
-.viewer-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.viewer .shot {
-  max-width: 64rem;
-  margin-inline: auto;
-  box-shadow: var(--shadow-lg);
-}
-
-.viewer figcaption {
-  max-width: 64rem;
-  margin: 1.25rem auto 0;
-  color: var(--muted-foreground);
-}
-
-.viewer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem 0.75rem;
-}
-
-.viewer .count {
-  color: var(--muted-foreground);
-  font-size: 0.95rem;
-}
-
 /* ---------- Header ---------- */
 
 .site-header {
@@ -346,48 +345,57 @@ kbd {
   top: 0;
   z-index: 50;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in oklab, var(--background) 90%, transparent);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--background) 85%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
 }
 
 .site-header .container {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem 1.5rem;
-  padding-block: 0.75rem;
+  gap: 1rem;
+  min-height: 3.75rem;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   text-decoration: none;
 }
 
+.site-nav {
+  margin-left: auto;
+}
+
 .site-nav ul {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.125rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .site-nav a {
-  display: block;
-  padding: 0.35rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.75rem;
   border-radius: var(--radius);
   color: var(--muted-foreground);
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.site-nav .icon {
+  width: 1.05em;
+  height: 1.05em;
 }
 
 .site-nav a:hover,
@@ -396,13 +404,35 @@ kbd {
   color: var(--foreground);
 }
 
+/* The footer carries every link, so a narrow header keeps only the logo and
+   the way to install. */
+@media (max-width: 42rem) {
+  .site-nav {
+    display: none;
+  }
+}
+
+.header-cta {
+  margin-left: auto;
+}
+
+.site-nav + .header-cta {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 42rem) {
+  .site-nav + .header-cta {
+    margin-left: auto;
+  }
+}
+
 /* ---------- Buttons ---------- */
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   padding: 0.7rem 1.25rem;
   border: 1px solid transparent;
   border-radius: var(--radius);
@@ -433,11 +463,17 @@ kbd {
 
 .button-secondary:hover {
   background: var(--card-hover);
+  border-color: color-mix(in oklab, var(--foreground) 22%, transparent);
 }
 
 .button-small {
   padding: 0.5rem 0.9rem;
   font-size: 0.9rem;
+}
+
+.button-large {
+  padding: 0.85rem 1.4rem;
+  font-size: 1.04rem;
 }
 
 .button-row {
@@ -446,137 +482,242 @@ kbd {
   gap: 0.75rem;
 }
 
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.arrow-link .icon {
+  width: 1em;
+  height: 1em;
+  transition: transform 0.15s;
+}
+
+.arrow-link:hover {
+  text-decoration: underline;
+}
+
+.arrow-link:hover .icon-arrow-right {
+  transform: translateX(2px);
+}
+
 /* ---------- Hero ---------- */
 
+/* A soft light behind the headline and the screenshot, nothing more. */
 .hero {
-  padding-block: 4rem 1rem;
+  padding-block: 4.5rem 0;
+  background:
+    radial-gradient(60rem 32rem at 50% 0, var(--glow), transparent 70%) no-repeat;
   text-align: center;
 }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 1.25rem;
-  padding: 0.3rem 0.85rem;
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 100%;
+  margin-bottom: 1.75rem;
+  padding: 0.3rem 0.85rem 0.3rem 0.3rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--card);
   color: var(--muted-foreground);
   font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.3;
+  text-align: left;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.pill:hover {
+  border-color: color-mix(in oklab, var(--foreground) 25%, transparent);
+  color: var(--foreground);
+}
+
+.pill-tag {
+  flex: none;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.pill .icon {
+  width: 1em;
+  height: 1em;
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 7vw, 4.75rem);
+  font-size: clamp(2.75rem, 8vw, 5.25rem);
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
 }
 
 .hero .lead {
-  max-width: 40rem;
+  max-width: 38rem;
   margin: 1.5rem auto 0;
   color: var(--muted-foreground);
   font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  line-height: 1.55;
 }
 
 .hero .button-row {
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
 }
 
 .hero .fineprint {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   color: var(--muted-foreground);
   font-size: 0.9rem;
 }
 
-/* A screenshot, always on the dark panel colour it was captured on. */
-.shot {
+.hero-shot {
+  max-width: 70rem;
+  margin-top: 3.5rem;
+}
+
+/* ---------- Screenshot frames ---------- */
+
+/* A screenshot in a thin bezel. The image itself sits on the dark panel
+   colour it was captured on, so a slow load never flashes white. */
+.frame {
   display: block;
-  overflow: hidden;
+  padding: 0.375rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: oklch(0.13 0.028 261.692);
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.2s;
+  border-radius: calc(var(--radius-lg) + 0.375rem);
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  box-shadow: var(--shadow-lg);
+  cursor: zoom-in;
+  transition: border-color 0.2s;
 }
 
 /* No lift on hover: a thumbnail raised by the pointer would be snapshotted
    a few pixels off its place when it is clicked. */
-a.shot:hover {
-  box-shadow: var(--shadow-lg);
+.frame:hover {
+  border-color: color-mix(in oklab, var(--foreground) 22%, transparent);
 }
 
-.shot img {
+.frame picture {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--shot-background);
+}
+
+.frame img {
   width: 100%;
 }
 
-.hero .shot {
-  max-width: 62rem;
-  margin: 3rem auto 0;
-  box-shadow: var(--shadow-lg);
+@media (max-width: 40rem) {
+  .frame {
+    padding: 0.25rem;
+    border-radius: calc(var(--radius) + 0.25rem);
+  }
+
+  .frame picture {
+    border-radius: var(--radius);
+  }
 }
 
 /* ---------- Facts strip ---------- */
 
 .facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: 1px;
-  margin: 3rem 0 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+  gap: 1.5rem 2rem;
+  margin: 3.5rem 0 0;
   padding: 0;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--border);
   list-style: none;
+  text-align: left;
 }
 
 .facts li {
-  padding: 1.1rem 1.25rem;
-  background: var(--card);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.85rem;
+  align-items: center;
+}
+
+.facts .icon {
+  grid-row: span 2;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--accent);
 }
 
 .facts strong {
-  display: block;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
 }
 
-.facts span {
+.facts span:not(.icon) {
   color: var(--muted-foreground);
   font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 /* ---------- Sections ---------- */
 
 .section {
-  padding-block: 5rem 0;
+  padding-block: 7rem 0;
 }
 
 .section-head {
-  max-width: 44rem;
-  margin-bottom: 2.5rem;
+  max-width: 42rem;
+  margin-bottom: 3rem;
 }
 
 .section-head h2 {
-  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
 }
 
 .section-head p {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   color: var(--muted-foreground);
   font-size: 1.1rem;
 }
 
-.section-head .kicker {
-  margin: 0 0 0.75rem;
+.section-head p + p {
+  margin-top: 0.75rem;
+}
+
+.section-head .button-row {
+  margin-top: 2rem;
+}
+
+.kicker {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
   color: var(--muted-foreground);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.section-head .kicker {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+}
+
+.step {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .split {
@@ -584,15 +725,231 @@ a.shot:hover {
   gap: 2.5rem;
 }
 
-@media (min-width: 52rem) {
+@media (min-width: 56rem) {
   .split {
     grid-template-columns: 1fr 1fr;
     align-items: start;
-    gap: 4rem;
+    gap: 5rem;
   }
 
   .split .section-head {
     margin-bottom: 0;
+  }
+}
+
+.note {
+  margin-top: 1.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+}
+
+/* ---------- Statement ---------- */
+
+.statement {
+  max-width: 54rem;
+  font-size: clamp(1.5rem, 3.4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.statement span {
+  color: var(--muted-foreground);
+}
+
+/* ---------- Feature rows ---------- */
+
+.feature {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.feature + .feature {
+  margin-top: 7rem;
+}
+
+.feature-text {
+  max-width: 34rem;
+}
+
+.feature h3 {
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.feature-text > p:not(.kicker) {
+  margin-top: 1rem;
+  color: var(--muted-foreground);
+}
+
+.feature-text > h3 + p:not(.kicker) {
+  margin-top: 1.25rem;
+}
+
+/* Portrait panel shots stay panel-sized rather than filling the column. */
+.feature-panel .feature-shot {
+  width: 100%;
+  max-width: 26rem;
+  justify-self: center;
+}
+
+@media (min-width: 60rem) {
+  .feature {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4rem;
+  }
+
+  .feature-panel {
+    grid-template-columns: minmax(0, 1fr) 26rem;
+    gap: 6rem;
+  }
+
+  /* Every other panel row puts its screenshot first, so the page zigzags. */
+  .feature-panel:nth-child(odd) {
+    grid-template-columns: 26rem minmax(0, 1fr);
+  }
+
+  .feature-panel:nth-child(odd) .feature-shot {
+    order: -1;
+  }
+
+  .feature-panel .feature-text {
+    justify-self: center;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ---------- Details ---------- */
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-grid li {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.detail-grid .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--accent);
+}
+
+.detail-grid h3 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.detail-grid p {
+  margin-top: 0.4rem;
+  color: var(--muted-foreground);
+  font-size: 0.975rem;
+}
+
+.detail-grid kbd {
+  font-size: 0.8em;
+}
+
+/* ---------- Shortcuts ---------- */
+
+.shortcuts {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.shortcuts > div {
+  padding: 1.25rem 1.5rem;
+}
+
+.shortcuts > div + div {
+  border-top: 1px solid var(--border);
+}
+
+.shortcuts dt {
+  margin-bottom: 0.6rem;
+  font-weight: 650;
+}
+
+.shortcuts dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.35rem 0 0;
+}
+
+.shortcuts .os {
+  width: 8.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+}
+
+.shortcuts .shortcut-note {
+  margin-top: 0.6rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+/* ---------- Privacy band ---------- */
+
+/* The one dark block on a light page; on a dark page, a lifted card. */
+.band {
+  --foreground: oklch(0.985 0.002 247.839);
+  --muted-foreground: oklch(0.8 0.022 261.325);
+  --border: oklch(1 0 0 / 12%);
+  --primary: oklch(0.985 0.002 247.839);
+  --primary-foreground: oklch(0.21 0.034 264.665);
+  --primary-hover: oklch(0.9 0.006 264.531);
+  --accent: oklch(0.78 0.11 262);
+  --ring: oklch(0.7 0.1 262);
+  padding: clamp(2rem, 6vw, 4.5rem);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(40rem 24rem at 100% 0, oklch(0.5 0.15 262 / 28%), transparent 70%),
+    oklch(0.19 0.035 264.665);
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  .band {
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(40rem 24rem at 100% 0, oklch(0.5 0.15 262 / 22%), transparent 70%),
+      var(--card);
   }
 }
 
@@ -604,235 +961,48 @@ a.shot:hover {
 
 .checklist li {
   position: relative;
-  padding-left: 1.75rem;
+  padding-left: 2rem;
 }
 
 .checklist li + li {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
 .checklist li::before {
   content: "";
   position: absolute;
-  left: 0.15rem;
-  top: 0.62em;
-  width: 0.7rem;
-  height: 0.4rem;
-  border-left: 2px solid var(--foreground);
-  border-bottom: 2px solid var(--foreground);
-  transform: translateY(-50%) rotate(-45deg);
+  left: 0;
+  top: 0.2em;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--accent);
+  -webkit-mask: url("/assets/icons/ui/check.svg") center / contain no-repeat;
+  mask: url("/assets/icons/ui/check.svg") center / contain no-repeat;
 }
 
-/* ---------- Cards ---------- */
+/* ---------- Principles ---------- */
 
-.card-grid {
+.principles {
   display: grid;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
-}
-
-.card {
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-}
-
-.card h3 {
-  margin-bottom: 0.6rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.card p {
-  color: var(--muted-foreground);
-  font-size: 1rem;
-}
-
-.card p + p {
-  margin-top: 0.75rem;
-}
-
-a.card {
-  display: block;
-  text-decoration: none;
-  transition: background-color 0.15s, border-color 0.15s, transform 0.15s;
-}
-
-a.card:hover {
-  background: var(--card-hover);
-  transform: translateY(-2px);
-}
-
-a.card h3::after {
-  content: " \2197";
-  color: var(--muted-foreground);
-  font-weight: 400;
-}
-
-a.card.internal h3::after {
-  content: " \2192";
-}
-
-/* ---------- Steps ---------- */
-
-.steps {
-  display: grid;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  counter-reset: step;
-  list-style: none;
-}
-
-.steps li {
-  position: relative;
-  padding: 1.25rem 1.5rem 1.25rem 4.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-  counter-increment: step;
-}
-
-.steps li::before {
-  content: counter(step);
-  position: absolute;
-  left: 1.25rem;
-  top: 1.1rem;
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  background: var(--primary);
-  color: var(--primary-foreground);
-  font-weight: 700;
-}
-
-.steps strong {
-  display: block;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
-}
-
-.steps span {
-  color: var(--muted-foreground);
-}
-
-/* ---------- Gallery ---------- */
-
-.gallery {
-  display: grid;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media (min-width: 46rem) {
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.gallery figure {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 2rem;
   margin: 0;
 }
 
-/* The viewer's Back button returns to the screenshot it came from. Landing
-   with it near the middle of the window keeps the page close to where the
-   reader was. */
-.gallery .shot {
-  scroll-margin-top: max(5rem, calc(50vh - min(13rem, 37.5vw)));
-}
-
-.gallery figcaption {
-  margin-top: 0.75rem;
-  color: var(--muted-foreground);
-  font-size: 0.95rem;
-}
-
-/* ---------- Install ---------- */
-
-.stores {
-  display: grid;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-}
-
-.store {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-}
-
-.store h3 {
-  font-size: 1.25rem;
-}
-
-.store p {
-  flex: 1;
-  margin-bottom: 1rem;
-  color: var(--muted-foreground);
-  font-size: 0.95rem;
-}
-
-/* ---------- Tables ---------- */
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.975rem;
-}
-
-th,
-td {
-  padding: 0.8rem 1.1rem;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  color: var(--muted-foreground);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-tbody tr + tr td,
-tbody tr + tr th {
+.principles > div {
+  padding-top: 1.1rem;
   border-top: 1px solid var(--border);
 }
 
-tbody th {
-  color: var(--foreground);
-  font-size: 0.975rem;
-  letter-spacing: 0;
-  text-transform: none;
+.principles dt {
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-.note {
-  margin-top: 1rem;
+.principles dd {
+  margin: 0.25rem 0 0;
   color: var(--muted-foreground);
-  font-size: 0.95rem;
+  font-size: 0.975rem;
 }
 
 /* ---------- Roadmap ---------- */
@@ -840,20 +1010,52 @@ tbody th {
 .roadmap {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+}
+
+.roadmap-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.roadmap-col h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.roadmap-col .plain-list {
+  flex: 1;
+  margin-bottom: 1.5rem;
 }
 
 .badge {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  padding: 0.15rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.7rem;
   border-radius: 999px;
   background: var(--muted);
   color: var(--foreground);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.badge-live::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: oklch(0.72 0.17 150);
+  box-shadow: 0 0 0 3px oklch(0.72 0.17 150 / 25%);
 }
 
 .plain-list {
@@ -863,53 +1065,188 @@ tbody th {
 }
 
 .plain-list li + li {
-  margin-top: 0.4rem;
+  margin-top: 0.45rem;
 }
 
-/* ---------- Link lists ---------- */
+.plain-list li::marker {
+  color: color-mix(in oklab, var(--muted-foreground) 60%, transparent);
+}
 
-.link-grid {
-  display: grid;
-  gap: 0.75rem;
+/* ---------- Link list ---------- */
+
+.link-list {
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
   list-style: none;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
 }
 
-.link-grid a {
-  display: block;
-  height: 100%;
+.link-list li + li {
+  border-top: 1px solid var(--border);
+}
+
+.link-list a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 1rem;
+  align-items: center;
   padding: 1rem 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
   text-decoration: none;
   transition: background-color 0.15s;
 }
 
-.link-grid a:hover {
+.link-list a::after {
+  content: "";
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  width: 1rem;
+  height: 1rem;
+  background: var(--muted-foreground);
+  -webkit-mask: url("/assets/icons/ui/arrow-up-right.svg") center / contain no-repeat;
+  mask: url("/assets/icons/ui/arrow-up-right.svg") center / contain no-repeat;
+}
+
+.link-list a:hover {
   background: var(--card-hover);
 }
 
-.link-grid strong {
-  display: block;
-  font-size: 1rem;
-}
-
-.link-grid strong::after {
-  content: " \2197";
+.link-list .icon {
+  grid-row: span 2;
   color: var(--muted-foreground);
-  font-weight: 400;
 }
 
-.link-grid .internal strong::after {
-  content: " \2192";
+.link-list strong {
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
-.link-grid span {
+.link-list span:not(.icon) {
   color: var(--muted-foreground);
   font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* ---------- Install ---------- */
+
+.install {
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(44rem 22rem at 50% 0, var(--glow), transparent 70%),
+    var(--card);
+  text-align: center;
+}
+
+.install h2 {
+  margin-top: 1.25rem;
+  font-size: clamp(2.2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.install > p {
+  max-width: 30rem;
+  margin: 1rem auto 0;
+  color: var(--muted-foreground);
+  font-size: 1.1rem;
+}
+
+.stores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 0.75rem;
+  max-width: 50rem;
+  margin: 2.5rem auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.store {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.store:hover {
+  border-color: color-mix(in oklab, var(--foreground) 25%, transparent);
+  background: var(--card-hover);
+}
+
+.store .icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.store strong {
+  font-size: 1.05rem;
+}
+
+.store span:not(.icon) {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+/* ---------- Screenshot viewer ---------- */
+
+.viewer {
+  padding-block: 2rem 0;
+}
+
+.viewer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* A screenshot, always on the dark panel colour it was captured on. */
+.shot {
+  display: block;
+  max-width: 64rem;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--shot-background);
+  box-shadow: var(--shadow-lg);
+}
+
+.shot img {
+  width: 100%;
+}
+
+.viewer figcaption {
+  max-width: 64rem;
+  margin: 1.25rem auto 0;
+  color: var(--muted-foreground);
+}
+
+.viewer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.75rem;
+}
+
+.viewer .count {
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
 }
 
 /* ---------- Prose pages (privacy, licence, changelog) ---------- */
@@ -978,7 +1315,7 @@ tbody th {
   margin-top: 2rem;
   padding: 1.1rem 1.4rem;
   border: 1px solid var(--border);
-  border-left-width: 4px;
+  border-left: 4px solid var(--accent);
   border-radius: var(--radius);
   background: var(--card);
   color: var(--muted-foreground);
@@ -1044,6 +1381,16 @@ tbody th {
   text-align: center;
 }
 
+.not-found h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.not-found .lead {
+  margin-top: 1rem;
+}
+
 .not-found .button-row {
   justify-content: center;
   margin-top: 2rem;
@@ -1052,8 +1399,8 @@ tbody th {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  margin-top: 6rem;
-  padding-block: 3rem;
+  margin-top: 7rem;
+  padding-block: 3.5rem 2.5rem;
   border-top: 1px solid var(--border);
   color: var(--muted-foreground);
   font-size: 0.95rem;
@@ -1061,12 +1408,21 @@ tbody th {
 
 .footer-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   gap: 2rem;
+}
+
+.footer-grid > :first-child {
+  grid-column: 1 / -1;
 }
 
 @media (min-width: 46rem) {
   .footer-grid {
-    grid-template-columns: 1.4fr repeat(3, 1fr);
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+  }
+
+  .footer-grid > :first-child {
+    grid-column: auto;
   }
 }
 
@@ -1077,21 +1433,21 @@ tbody th {
 
 .site-footer p {
   margin-top: 0.75rem;
-  max-width: 24rem;
+  max-width: 22rem;
 }
 
 .site-footer h2 {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
   color: var(--foreground);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .site-footer ul {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.45rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1108,32 +1464,58 @@ tbody th {
 
 .site-footer .footer-note {
   max-width: none;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
 }
+
+/* ---------- Small screens ---------- */
 
 @media (max-width: 40rem) {
   body {
     font-size: 1rem;
   }
 
-  .site-nav a {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.9rem;
+  .hero {
+    padding-top: 2.75rem;
   }
 
-  .hero {
-    padding-top: 2.5rem;
+  .hero .button-row .button {
+    flex: 1 1 auto;
+  }
+
+  .hero .button-row .button:first-child {
+    flex-basis: 100%;
+  }
+
+  .hero-shot {
+    margin-top: 2.5rem;
   }
 
   .section {
-    padding-top: 3.5rem;
+    padding-top: 4.5rem;
   }
 
-  .steps li {
-    padding-left: 4rem;
+  .feature + .feature {
+    margin-top: 4.5rem;
+  }
+
+  .section-head {
+    margin-bottom: 2rem;
+  }
+
+  .shortcuts > div {
+    padding: 1.1rem 1.15rem;
+  }
+
+  .shortcuts .os {
+    width: 7.25rem;
+    font-size: 0.85rem;
+  }
+
+  .site-footer {
+    margin-top: 5rem;
   }
 }
 
