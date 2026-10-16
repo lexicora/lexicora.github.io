@@ -2,18 +2,18 @@
 
 > Lexicora is an offline web clipper and bookmark manager for Chrome, Edge and Firefox. It works in the browser's side panel: capture a page's content into an editor, or bookmark it, sort entries into topics and tags, and search them later. Everything stays on the user's device: no account, no server, no analytics.
 
-Key facts, as of version 1.1.0 (14 October 2026):
+Key facts, as of version 1.2.0 (16 October 2026):
 
 - Two ways to save. Capture keeps the page's content as an editable entry, with its headings, lists, tables, code, callouts and images, and without the menus, sidebars and ads around it. Bookmark keeps only the title, link, site and description.
 - Saving works from the side panel, the toolbar popup, the right-click menu or a keyboard shortcut. The menu and the shortcut can capture just the selected text. In Chrome and Edge, Lexicora can offer to capture a page after a while on it; the delay can be changed and the offer switched off.
 - Entries belong to topics, which do not nest. Tags cut across topics. Entries can be pinned, archived and marked as favourites.
-- Search covers titles, tags, descriptions, site names and dates. `site:react.dev` narrows it to one site. On a site, the side panel shows what was already saved from it.
+- Search covers titles, tags, descriptions, site names and dates. `site:react.dev` narrows it to one site, and `topic:react` (or `topic:"my project"`) to the topics with that text in their name; they combine with each other and with words. On a site, the side panel shows what was already saved from it.
 - Every entry has a block editor: headings, lists, tables, code blocks with syntax highlighting, and callouts.
 - Export a note, a topic or the whole library as Markdown with YAML front matter (Obsidian reads it as properties), or as a JSON backup that can be imported again.
 - Browser-wide shortcuts. Open or close the side panel: Control+Shift+L on macOS, Alt+Shift+L on Windows and Linux. Capture the selection or the page: Control+Shift+S, or Alt+Shift+S (Alt+Shift+W in Firefox on Windows and Linux). Bookmark the page: Control+Shift+D, or Alt+Shift+D.
 - Privacy: the library is stored by the browser on the user's device, and the extension makes no network requests of its own. Site icons and images in entries load from where they are hosted. Version 1 has no AI features.
 - Free for non-commercial use. The source is available under the Lexicora Extension License. Developed by Timothy (@tgmaurer).
-- Planned, not yet available: AI-assisted summaries, sync across devices, a web app, light sharing.
+- Status: feature-complete and in maintenance. No new features are planned for now, but bugs are fixed and the extension is kept working as browsers change. AI-assisted summaries, sync across devices, a web app and light sharing were part of the original plan; they are not being worked on, and not ruled out for good.
 
 ## Install
 
@@ -23,7 +23,7 @@ Key facts, as of version 1.1.0 (14 October 2026):
 
 ## Pages
 
-- [Homepage](https://lexicora.github.io/): what Lexicora does, with screenshots, shortcuts, privacy, principles and roadmap
+- [Homepage](https://lexicora.github.io/): what Lexicora does, with screenshots, shortcuts, privacy, principles and status
 - [Support](https://lexicora.github.io/support/): reporting a problem, contact, finding the side panel, backing up and deleting the library
 - [Changelog](https://lexicora.github.io/changelog/): release notes for every version
 - [Privacy policy](https://lexicora.github.io/privacy/): the extension's privacy policy

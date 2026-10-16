@@ -10,7 +10,7 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 
 | Path | What |
 | --- | --- |
-| `index.html` | Landing page: hero, the four steps (capture, organise, find, keep) each beside the screen it happens on, details, shortcuts, privacy, principles, roadmap, install |
+| `index.html` | Landing page: hero, the four steps (capture, organise, find, keep) each beside the screen it happens on, details, shortcuts, privacy, principles, status (where the extension stands and what is set aside), install |
 | `support/` | Support: report a problem, email, the repository, finding the side panel, backing up and deleting the library. The URL for the stores' support field |
 | `privacy/` | The extension's privacy policy, mirrors `PRIVACY.md` in the extension repository |
 | `privacy/website/` | This website's own privacy policy: no cookies or analytics, GitHub Pages' IP logging, the script's session storage. Written for the site, not mirrored |
@@ -45,7 +45,7 @@ Then open <http://localhost:8000>. Paths are root-relative, so the site needs to
 
 The privacy policy, extension licence, changelog and screenshot captions are copies. The website's own licence and privacy policy are not: when `LICENSE.txt` here changes, update `license/website/` to match, and when the site starts keeping or sending anything new (a script that stores more, analytics, another host), update `privacy/website/` first. When `PRIVACY.md`, `LICENSE.txt` or the changelog change in the extension repository, update the matching page here (and `assets/LICENSE.txt`). Store URLs appear in `index.html` (hero, install section) and nowhere else. The Chrome Web Store and Firefox Add-ons links carry `utm_source=lexicora-website&utm_medium=hero` or `…=install`, the same scheme as the extension's own links (`utm_source=lexicora-extension`, `utm_medium` naming the place clicked; `withUtm` in `src/constants/site.ts`), so each store's statistics show the website, and which button, beside the extension. The Chrome link is the address the store redirects to (`/detail/lexicora/<id>`), to save a redirect. Edge Add-ons is left untagged: its statistics do not report UTM parameters. The website privacy policy describes these tags.
 
-On a release, `index.html` names the version in three places: the "New in" pill (which links to the release's changelog entry), the line under the store buttons, and `softwareVersion` in the JSON-LD block. `llms.txt` names it too, in its key facts, which are a summary like the homepage's: update them when a release changes what Lexicora does.
+On a release, `index.html` names the version in three places: the "New in" pill (which links to the release's changelog entry), the line under the store buttons, and `softwareVersion` in the JSON-LD block. `llms.txt` names it too, in its key facts, which are a summary like the homepage's: update them when a release changes what Lexicora does. Add the release to `changelog/` from `src/constants/changelog.ts`, newest first, with an `id` of `v` and the version, which the pill links to. The homepage's status section and the status line in `llms.txt` follow the extension's `docs/ROADMAP.md` (feature-complete and in maintenance since 1.2.0).
 
 The header and footer are the same on every page, written out in each. On the subpages, the header's Features and Install links point at `/#…` and Privacy at `/privacy/`, and the page's own link carries `aria-current="page"`.
 
