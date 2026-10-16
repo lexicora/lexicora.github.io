@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lexicora – Keep what you read</title>
+  <meta name="description" content="Lexicora is an offline web clipper and bookmark manager for Chrome, Edge and Firefox. Capture a page beside it, sort it into topics and search it later. No account, no server.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#00143d">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lexicora – Keep what you read">
+  <meta property="og:description" content="Capture any page into your own library, right beside it. Fully offline, for Chrome, Edge and Firefox.">
+  <meta property="og:image" content="https://lexicora.github.io/assets/img/screenshots/1-1600.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/wix-madefor-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#install">Install</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="https://github.com/lexicora/lexicora-extension">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero container">
+      <p class="eyebrow">Version 1.1 · Chrome, Edge and Firefox</p>
+      <h1>Keep what you read.</h1>
+      <p class="lead">Lexicora captures any page into your own library, right beside it. Sort it into topics, search it later. It stays on your device: no account, no server, no analytics.</p>
+      <div class="button-row">
+        <a class="button" href="https://chromewebstore.google.com/detail/ainigcpoeibgglaldkjippcccaicnjjd">Add to Chrome</a>
+        <a class="button" href="https://addons.mozilla.org/addon/lexicora/">Add to Firefox</a>
+        <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl">Add to Edge</a>
+      </div>
+      <p class="fineprint">Free for non-commercial use · <a href="https://github.com/lexicora/lexicora-extension">source-available on GitHub</a></p>
+
+      <div class="screenshot-frame">
+        <img
+          src="/assets/img/screenshots/1-1600.jpg"
+          srcset="/assets/img/screenshots/1-800.jpg 800w, /assets/img/screenshots/1-1600.jpg 1600w"
+          sizes="(min-width: 62rem) 62rem, 100vw"
+          width="1600" height="1200"
+          alt="The Lexicora side panel next to a Wikipedia article, showing topics, entries from the same site and the Capture page button">
+      </div>
+
+      <ul class="facts" aria-label="At a glance">
+        <li><strong>No account</strong><span>Nothing to sign up for</span></li>
+        <li><strong>No server</strong><span>Makes no requests of its own</span></li>
+        <li><strong>No analytics</strong><span>Nothing about you leaves</span></li>
+        <li><strong>Yours to take</strong><span>Markdown and JSON export</span></li>
+      </ul>
+    </section>
+
+    <!-- Problem -->
+    <section class="section container" id="about">
+      <div class="split">
+        <div class="section-head">
+          <p class="kicker">The problem</p>
+          <h2>What is worth remembering is read once, and lost.</h2>
+          <p>Most valuable knowledge lives in AI chats, documentation sites, blogs and Wikipedia, scattered across tabs, sessions and tools. Once read, it is buried or hard to find again.</p>
+        </div>
+        <div>
+          <p>Lexicora lets you:</p>
+          <ul class="checklist" style="margin-top: 1rem;">
+            <li>capture web content directly from the browser</li>
+            <li>clean and structure it automatically</li>
+            <li>store it in a fast, searchable local knowledge base</li>
+            <li>retrieve it instantly when you need it</li>
+          </ul>
+          <p class="note">All without changing how you already browse or use AI tools. Lexicora is intentionally opinionated: not a general-purpose note-taking app, not a workspace, not a social platform. It is a tool for turning web content into searchable knowledge with as little friction as possible.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section container" id="features">
+      <div class="section-head">
+        <p class="kicker">Features</p>
+        <h2>Capture, structure, retrieve.</h2>
+        <p>Everything between reading something and finding it again, in the browser side panel.</p>
+      </div>
+      <ul class="card-grid">
+        <li class="card">
+          <h3>Two ways to save</h3>
+          <p>Capture a page and its content lands in an editor you can annotate, so it survives the page changing or disappearing. Or bookmark it, and keep only the title, link, site and description.</p>
+        </li>
+        <li class="card">
+          <h3>Save from anywhere</h3>
+          <p>From the side panel, the toolbar popup, the right-click menu or a keyboard shortcut. The menu and the shortcut can keep just the text you selected. In Chrome and Edge, Lexicora can also suggest capturing a page you have spent a while on.</p>
+        </li>
+        <li class="card">
+          <h3>Cleaned, not scraped</h3>
+          <p>Lexicora keeps the article with its headings, paragraphs, lists, code, tables, callouts and images, and leaves out the menus, sidebars and ads around it.</p>
+        </li>
+        <li class="card">
+          <h3>Sort it your way</h3>
+          <p>Topics group what belongs together. Tags cut across them. Pin what you return to, archive what you are done with, favourite what matters.</p>
+        </li>
+        <li class="card">
+          <h3>Find it again</h3>
+          <p>Search runs over titles, tags, descriptions, sites and dates. Narrow it to one site with <code>site:react.dev</code>. Back on a site, the side panel shows what you already saved from it.</p>
+        </li>
+        <li class="card">
+          <h3>Write in it</h3>
+          <p>Every entry has a rich block editor: headings, lists, tables, code blocks with syntax highlighting and callouts. Drag text and images in from the page you are reading.</p>
+        </li>
+        <li class="card">
+          <h3>Take it with you</h3>
+          <p>Export a note, a topic or the whole library as Markdown with front matter that Obsidian reads as properties. Or back up as JSON and import it again, choosing what wins when something exists in both.</p>
+        </li>
+        <li class="card">
+          <h3>Keyboard-driven</h3>
+          <p>Browser-wide shortcuts open the panel, capture and bookmark. Inside the panel, single keys move around, search and edit. Light, dark or system theme, painted correctly from the first frame.</p>
+        </li>
+        <li class="card">
+          <h3>Offline-first</h3>
+          <p>The library lives in your browser's own database for the extension and works fully offline. Search and retrieval never wait on a network.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- How it works -->
+    <section class="section container" id="how-it-works">
+      <div class="section-head">
+        <p class="kicker">How it works</p>
+        <h2>Browse as you always do.</h2>
+        <p>Most interactions happen inside the browser side panel, keeping context and flow intact.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <strong>Browse the web</strong>
+          <span>AI chats, docs, articles, wikis, anywhere.</span>
+        </li>
+        <li>
+          <strong>Capture it</strong>
+          <span>The page, just the text you selected, or a bookmark of it, from the side panel, the toolbar popup, the right-click menu or a keyboard shortcut.</span>
+        </li>
+        <li>
+          <strong>Lexicora keeps the content and its structure</strong>
+          <span>Headings, paragraphs, lists, code, tables, callouts and images stay. Menus, sidebars and ads do not.</span>
+        </li>
+        <li>
+          <strong>It lands in a topic</strong>
+          <span>Editable and searchable at once.</span>
+        </li>
+        <li>
+          <strong>Come back to it</strong>
+          <span>When you are back on a site, the side panel shows what you already saved from it.</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section container" id="screenshots">
+      <div class="section-head">
+        <p class="kicker">Screenshots</p>
+        <h2>A look inside.</h2>
+      </div>
+      <ul class="gallery">
+        <li>
+          <figure>
+            <a href="/assets/img/screenshots/2-1600.jpg">
+              <img loading="lazy" src="/assets/img/screenshots/2-800.jpg" srcset="/assets/img/screenshots/2-800.jpg 800w, /assets/img/screenshots/2-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="A React Router docs page captured into the editor, with its headings, lists, callout and code block">
+            </a>
+            <figcaption>A captured page in the editor, with its headings, lists, callout and code block.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <a href="/assets/img/screenshots/3-1600.jpg">
+              <img loading="lazy" src="/assets/img/screenshots/3-800.jpg" srcset="/assets/img/screenshots/3-800.jpg 800w, /assets/img/screenshots/3-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="The library's entry list with tags, favicons, pins and favourites">
+            </a>
+            <figcaption>The library: tags, site icons, pins and favourites.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <a href="/assets/img/screenshots/4-1600.jpg">
+              <img loading="lazy" src="/assets/img/screenshots/4-800.jpg" srcset="/assets/img/screenshots/4-800.jpg 800w, /assets/img/screenshots/4-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="Library search narrowed to one site with site:react.dev">
+            </a>
+            <figcaption>Search narrowed to a single site with <code>site:react.dev</code>.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <a href="/assets/img/screenshots/5-1600.jpg">
+              <img loading="lazy" src="/assets/img/screenshots/5-800.jpg" srcset="/assets/img/screenshots/5-800.jpg 800w, /assets/img/screenshots/5-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="The export page, offering a JSON backup or a Markdown archive">
+            </a>
+            <figcaption>Export as a JSON backup or a Markdown archive.</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Principles -->
+    <section class="section container" id="principles">
+      <div class="section-head">
+        <p class="kicker">Design principles</p>
+        <h2>Opinionated on purpose.</h2>
+      </div>
+      <ul class="card-grid">
+        <li class="card"><h3>Capture-first</h3><p>Saving knowledge should be effortless.</p></li>
+        <li class="card"><h3>Retrieval-first</h3><p>Finding saved knowledge must be instant.</p></li>
+        <li class="card"><h3>Speed over complexity</h3><p>No heavy UI, no deep nesting.</p></li>
+        <li class="card"><h3>Flat structure by design</h3><p>Intentional limits improve clarity.</p></li>
+        <li class="card"><h3>Keyboard-driven</h3><p>Minimal mouse usage.</p></li>
+        <li class="card"><h3>Browser-native</h3><p>Works where knowledge is consumed.</p></li>
+        <li class="card"><h3>Local-first</h3><p>The library lives on your device. Version 1 works fully offline and sends nothing anywhere.</p></li>
+        <li class="card"><h3>AI-optional</h3><p>Useful without AI, powerful with it.</p></li>
+      </ul>
+    </section>
+
+    <!-- Shortcuts -->
+    <section class="section container" id="shortcuts">
+      <div class="section-head">
+        <p class="kicker">Keyboard</p>
+        <h2>Browser-wide shortcuts.</h2>
+        <p>These work from any page. Inside the side panel there are more, and all of them are listed in Settings → Keyboard Shortcuts.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Action</th><th scope="col">macOS</th><th scope="col">Windows and Linux</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Open or close the side panel</th><td><kbd>⌃</kbd> <kbd>⇧</kbd> <kbd>L</kbd></td><td><kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>L</kbd></td></tr>
+            <tr><th scope="row">Capture the selection, or the page</th><td><kbd>⌃</kbd> <kbd>⇧</kbd> <kbd>S</kbd></td><td><kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>S</kbd> (Firefox: <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>W</kbd>)</td></tr>
+            <tr><th scope="row">Bookmark the page</th><td><kbd>⌃</kbd> <kbd>⇧</kbd> <kbd>D</kbd></td><td><kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>D</kbd></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Shortcuts can be changed in your browser's own extension shortcut settings.</p>
+    </section>
+
+    <!-- Privacy -->
+    <section class="section container" id="privacy">
+      <div class="split">
+        <div class="section-head">
+          <p class="kicker">Privacy</p>
+          <h2>It is yours.</h2>
+          <p>Lexicora keeps everything you capture on your own computer. It has no accounts, no servers and no analytics, and it sends nothing about you or your browsing anywhere.</p>
+          <div class="button-row" style="margin-top: 1.5rem;">
+            <a class="button" href="/privacy/">Read the privacy policy</a>
+          </div>
+        </div>
+        <ul class="checklist">
+          <li>Your library is stored by your browser, on this device.</li>
+          <li>The extension makes no network requests of its own.</li>
+          <li>A page is read only when you capture or bookmark it, and only the page open in front of you, never other tabs and never in the background.</li>
+          <li>Delete everything at once with Settings → Storage → “Clear all data”, or by removing the extension.</li>
+          <li>If a future version ever sends anything anywhere, the policy says so first, and the feature is yours to switch on.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Install -->
+    <section class="section container" id="install">
+      <div class="section-head">
+        <p class="kicker">Install</p>
+        <h2>Get Lexicora.</h2>
+        <p>One extension, three browsers.</p>
+      </div>
+      <ul class="stores">
+        <li class="store">
+          <h3>Chrome</h3>
+          <p>The Chrome Web Store version, with the capture suggestion.</p>
+          <a class="button" href="https://chromewebstore.google.com/detail/ainigcpoeibgglaldkjippcccaicnjjd">Chrome Web Store</a>
+        </li>
+        <li class="store">
+          <h3>Edge</h3>
+          <p>The Microsoft Edge Add-ons version, with the capture suggestion.</p>
+          <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl">Edge Add-ons</a>
+        </li>
+        <li class="store">
+          <h3>Firefox</h3>
+          <p>Firefox Add-ons (AMO). Builds are reproducible from the published source.</p>
+          <a class="button" href="https://addons.mozilla.org/addon/lexicora/">Firefox Add-ons</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Status and roadmap -->
+    <section class="section container" id="roadmap">
+      <div class="section-head">
+        <p class="kicker">Status</p>
+        <h2>Version 1 is out. This is where it goes.</h2>
+        <p>Work continues on refinements to the offline extension. The backend, web app and AI features come after, as the core experience settles. The vision stays narrow: turning ephemeral web knowledge into permanent, accessible understanding.</p>
+      </div>
+      <div class="roadmap">
+        <div class="card">
+          <span class="badge">Available now</span>
+          <h3>Offline, single device</h3>
+          <ul class="plain-list">
+            <li>Capture and bookmark, from the panel, popup, menu or keyboard</li>
+            <li>Topics, tags, pins, favourites and archive</li>
+            <li>Search with a <code>site:</code> filter</li>
+            <li>Markdown export and JSON backup with import</li>
+            <li>Keyboard shortcuts, find in page, heading map</li>
+          </ul>
+          <p><a href="/changelog/">What changed in each release →</a></p>
+        </div>
+        <div class="card">
+          <span class="badge">Planned</span>
+          <h3>Beyond version 1</h3>
+          <ul class="plain-list">
+            <li>AI-assisted summarisation and refinement</li>
+            <li>Sync across devices, and a web app for expanded views and management</li>
+            <li>Light sharing and collaboration</li>
+            <li>A standalone windowed app, which is built but parked</li>
+          </ul>
+          <p><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md">Read the full roadmap on GitHub ↗</a></p>
+        </div>
+        <div class="card">
+          <span class="badge">Not the goal</span>
+          <h3>What Lexicora is not</h3>
+          <p>A full project management tool, a generic note-taking app, a deeply nested workspace or a social platform. Those problems are already solved elsewhere, often at the cost of speed and clarity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open on GitHub -->
+    <section class="section container" id="github">
+      <div class="section-head">
+        <p class="kicker">Open development</p>
+        <h2>Everything is on GitHub.</h2>
+        <p>Lexicora is source-available under a non-commercial licence and developed in the open. Found a bug, or want something changed? Tell us.</p>
+      </div>
+      <ul class="link-grid">
+        <li><a href="https://github.com/lexicora/lexicora-extension"><strong>Source code</strong><span>The lexicora-extension repository</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/issues/new/choose"><strong>Report a bug or request a feature</strong><span>Open an issue</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/issues"><strong>Issues</strong><span>Browse what is open and planned</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/releases"><strong>Releases</strong><span>Tagged versions, v1.0.0 to v1.1.0</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/README.md"><strong>README</strong><span>Overview, build and development notes</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md"><strong>Roadmap</strong><span>The plan and the decisions behind it</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/store-listing.md"><strong>Store listing and permissions</strong><span>Why each permission is needed</span></a></li>
+        <li><a class="internal" href="/privacy/"><strong>Privacy policy</strong><span>Also on this site</span></a></li>
+        <li><a class="internal" href="/license/"><strong>Licence</strong><span>Also on this site</span></a></li>
+      </ul>
+      <p class="note">Questions, or something here that does not match what you see? Write to <a href="mailto:hello@tgmaurer.dev">hello@tgmaurer.dev</a>.</p>
+    </section>
+
+    <!-- Built with -->
+    <section class="section container" id="built-with">
+      <div class="section-head">
+        <p class="kicker">Under the hood</p>
+        <h2>Built with.</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">Extension framework</th><td><a href="https://wxt.dev">WXT</a> (Chrome MV3 / Firefox MV2)</td></tr>
+            <tr><th scope="row">UI</th><td><a href="https://react.dev">React 19</a>, <a href="https://tailwindcss.com">Tailwind CSS v4</a>, <a href="https://ui.shadcn.com/">shadcn/ui</a></td></tr>
+            <tr><th scope="row">Editor</th><td><a href="https://www.blocknotejs.org/">BlockNote</a></td></tr>
+            <tr><th scope="row">Local database</th><td><a href="https://rxdb.info/">RxDB</a> on <a href="https://dexie.org/">Dexie</a>, in IndexedDB</td></tr>
+            <tr><th scope="row">Content parsing</th><td>Its own DOM parser and <a href="https://github.com/cure53/DOMPurify">DOMPurify</a></td></tr>
+            <tr><th scope="row">Language and tooling</th><td><a href="https://www.typescriptlang.org/">TypeScript</a>, <a href="https://bun.sh">Bun</a>, <a href="https://vitest.dev/">Vitest</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
+          <p>Capture, structure and retrieve what you read. Offline, on your device.</p>
+        </div>
+        <nav aria-label="Product">
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#how-it-works">How it works</a></li>
+            <li><a href="/#install">Install</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy/">Privacy policy</a></li>
+            <li><a href="/license/">Licence</a></li>
+            <li><a href="mailto:hello@tgmaurer.dev">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="GitHub">
+          <h2>GitHub</h2>
+          <ul>
+            <li><a href="https://github.com/lexicora/lexicora-extension">Repository</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/issues">Issues</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/releases">Releases</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md">Roadmap</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-note">© 2025–2026 Lexicora / Timothy (@tgmaurer). Used under the <a href="/license/">Lexicora Extension License</a>. This site has no cookies, no analytics and no JavaScript.</p>
+    </div>
+  </footer>
+</body>
+</html>
