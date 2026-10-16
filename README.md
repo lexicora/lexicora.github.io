@@ -27,6 +27,7 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 | `assets/icons/` | Chrome, Edge, Firefox and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0). The brands are trademarks of their owners |
 | `assets/icons/ui/` | Interface icons from [Lucide](https://lucide.dev) (ISC, licence alongside), the set the extension uses, exported from its `lucide-react` |
 | `scripts/` | Tools for regenerating images, not part of the site |
+| `_config.yml` | Tells GitHub Pages' Jekyll build what not to publish: `README.md`, `LICENSE.txt` and `scripts/` (dotfiles such as `.claude/` are left out anyway). Add new repository-only files here. Pages has no front matter, so everything else is copied unchanged |
 | `assets/fonts/`, `assets/logos/` | Fonts (SIL OFL, licences alongside) and logos from the extension |
 
 ## Preview

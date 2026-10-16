@@ -1,0 +1,28 @@
+# GitHub Pages builds this repository with Jekyll. The site is plain HTML
+# without front matter, so Jekyll copies every page and asset as it is; this
+# file only keeps the repository's own files from being published.
+#
+# Jekyll already leaves out anything whose name starts with ".", "_", "#" or
+# "~" (.claude/, .gitignore, .DS_Store, this file).
+
+exclude:
+  # Jekyll's defaults. GitHub Pages runs Jekyll 3, where a custom list
+  # replaces them instead of adding to them.
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+  # Notes for whoever works on the site. GitHub Pages renders Markdown even
+  # without front matter, so this would otherwise appear as /README.html.
+  - README.md
+
+  # The website licence. /license/website/ shows it and links here on GitHub.
+  # (assets/LICENSE.txt, the extension licence it refers to, stays published.)
+  - LICENSE.txt
+
+  # Image tooling: the product-shot script and the social card template.
+  - scripts/
