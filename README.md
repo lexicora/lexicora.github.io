@@ -1,2 +1,78 @@
 # lexicora.github.io
-Homepage for the Lexicora browser extension
+
+Homepage for the [Lexicora browser extension](https://github.com/lexicora/lexicora-extension): the landing page, store links, privacy policy, licence and changelog.
+
+Plain HTML and CSS, no build step, no dependencies. One small script, `assets/js/site.js`, smooths a few things (below); every page works without it. Light and dark follow the system via `prefers-color-scheme`, using the same colour tokens, fonts (Wix Madefor Text, JetBrains Mono) and logo as the extension.
+
+Page navigation is smoothed with cross-document view transitions (`@view-transition` in the CSS): the regular cross-fade, the same on every page, with the header held in place. Jumps within a page scroll smoothly; arriving on a page at an anchor does not, since smooth scrolling is switched off while a transition runs (`html:active-view-transition`). Browsers without support just navigate normally, as do users who prefer reduced motion.
+
+## Layout
+
+| Path | What |
+| --- | --- |
+| `index.html` | Landing page: hero, the four steps (capture, organise, find, keep) each beside the screen it happens on, details, shortcuts, privacy, principles, roadmap, install |
+| `privacy/` | The extension's privacy policy, mirrors `PRIVACY.md` in the extension repository |
+| `privacy/website/` | This website's own privacy policy: no cookies or analytics, GitHub Pages' IP logging, the script's session storage. Written for the site, not mirrored |
+| `license/` | Lexicora Extension License, mirrors `LICENSE.txt` in the extension repository |
+| `license/website/` | Lexicora Website License, the proprietary licence for this site; shows `LICENSE.txt` in this repository |
+| `LICENSE.txt` | The Lexicora Website License. It names what is licensed separately: extension material (logos, screenshots, the mirrored legal texts), fonts, icons |
+| `changelog/` | Release notes, mirrors `src/constants/changelog.ts` |
+| `screenshots/1/` to `5/` | One viewer page per screenshot; back and previous/next sit at the top right |
+| `404.html` | Not-found page (GitHub Pages serves it automatically) |
+| `assets/css/style.css` | All styling |
+| `assets/js/site.js` | The only script: the homepage logo scrolls to the top, and the screenshot viewer's Back goes back in history in one step (`history.go(-depth)`, each viewer page keeping its depth in `history.state`), so the homepage comes back exactly where it was. Previous and Next stay plain links: navigating from script (`location.replace`) made the view transition start from a white frame. ←, → and Esc work too. It keeps one note in `sessionStorage`, described in the website privacy policy; change that page if the script starts keeping anything else |
+| `assets/img/product/` | The landing page's product shots: the browser window or side panel cut out of each store screenshot, without its headline. AVIF, JPEG XL and JPEG, made by `scripts/product-shots.sh` |
+| `assets/img/screenshots/` | The store screenshots themselves, from `docs/store/screenshots` at 800, 1600 and 2400 px, as AVIF, JPEG XL and JPEG. Used by the viewer pages, which preload the AVIF and ask Chrome and Edge (speculation rules) to prerender the neighbouring viewer pages; the homepage prerenders a viewer page when a screenshot is hovered |
+| `assets/img/og.jpg` | The 1200 × 630 social preview card, rendered from `scripts/og.html` |
+| `assets/icons/` | Chrome, Edge, Firefox and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0). The brands are trademarks of their owners |
+| `assets/icons/ui/` | Interface icons from [Lucide](https://lucide.dev) (ISC, licence alongside), the set the extension uses, exported from its `lucide-react` |
+| `scripts/` | Tools for regenerating images, not part of the site |
+| `_config.yml` | Tells GitHub Pages' Jekyll build what not to publish: `README.md`, `LICENSE.txt` and `scripts/` (dotfiles such as `.claude/` are left out anyway). Add new repository-only files here. Pages has no front matter, so everything else is copied unchanged |
+| `assets/fonts/`, `assets/logos/` | Fonts (SIL OFL, licences alongside) and logos from the extension |
+
+## Preview
+
+```sh
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000>. Paths are root-relative, so the site needs to be served from `/`, as it is on GitHub Pages.
+
+## Keeping it in step with the extension
+
+The privacy policy, extension licence, changelog and screenshot captions are copies. The website's own licence and privacy policy are not: when `LICENSE.txt` here changes, update `license/website/` to match, and when the site starts keeping or sending anything new (a script that stores more, analytics, another host), update `privacy/website/` first. When `PRIVACY.md`, `LICENSE.txt` or the changelog change in the extension repository, update the matching page here (and `assets/LICENSE.txt`). Store URLs appear in `index.html` (hero, install section) and nowhere else.
+
+On a release, `index.html` names the version in three places: the "New in" pill (which links to the release's changelog entry), the line under the store buttons, and `softwareVersion` in the JSON-LD block.
+
+The header and footer are the same on every page, written out in each. On the subpages, the header's Features and Install links point at `/#…` and Privacy at `/privacy/`, and the page's own link carries `aria-current="page"`.
+
+## Regenerating images
+
+Needs `cjxl` and `avifenc` (`brew install jpeg-xl libavif`); `sips` comes with macOS.
+
+**Product shots.** When the store screenshots change, run from the repository root, with the extension checked out beside it:
+
+```sh
+scripts/product-shots.sh ../lexicora-extension
+```
+
+The crop boxes are at the bottom of the script. They assume the current layout of the store screenshots (window or panel in the same place), so check them when the screenshots are recomposed. Each `<picture>` offers AVIF, then JPEG XL, then JPEG.
+
+**Store screenshots** (the viewer pages). From the 2400 px originals:
+
+```sh
+cjxl 2.png assets/img/screenshots/2-2400.jxl -d 1.0 -e 7   # also at 1600 and 800 px, resized first
+avifenc -q 62 -s 4 -y 444 2.png assets/img/screenshots/2-2400.avif   # likewise
+sips -s format jpeg -s formatOptions 82 -Z 1600 2.png --out assets/img/screenshots/2-1600.jpg
+```
+
+**Social card.** `scripts/og.html` uses the site's own font, logo and capture shot. Render it with Chrome and save it as JPEG:
+
+```sh
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+  --allow-file-access-from-files --virtual-time-budget=3000 --window-size=1200,630 \
+  --screenshot=/tmp/og.png "file://$PWD/scripts/og.html"
+sips -s format jpeg -s formatOptions 85 /tmp/og.png --out assets/img/og.jpg
+```
+
+External links carry `target="_blank" rel="noopener noreferrer"`; keep that when adding links. Internal links (`/…` and `#…`) carry `draggable="false"`, as do the images inside them, so a click that moves a little is not taken for a drag.

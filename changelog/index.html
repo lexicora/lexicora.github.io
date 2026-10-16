@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Changelog – Lexicora</title>
+  <meta name="description" content="What changed in each release of Lexicora, newest first.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f1f2f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#00081a" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Changelog – Lexicora">
+  <meta property="og:description" content="What changed in each release of Lexicora, newest first.">
+  <meta property="og:image" content="https://lexicora.github.io/assets/img/og.jpg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/wix-madefor-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/site.js" defer></script>
+  <link rel="expect" href="#main" blocking="render">
+</head>
+<body>
+  <a class="skip-link" href="#main" draggable="false">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" draggable="false"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#features" draggable="false">Features</a></li>
+          <li><a href="/privacy/" draggable="false">Privacy</a></li>
+          <li><a href="/changelog/" aria-current="page" draggable="false">Changelog</a></li>
+          <li><a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer"><span class="icon icon-github" aria-hidden="true"></span>GitHub</a></li>
+        </ul>
+      </nav>
+      <a class="button button-small header-cta" href="/#install" draggable="false">Install</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head">
+        <h1>What changed</h1>
+        <p class="lead">The release notes for every version of Lexicora, newest first. The same list is in the extension under Settings → About.</p>
+      </div>
+      <div class="prose">
+        <article class="release" id="v1.1.0">
+          <header>
+            <h2>Version 1.1.0</h2>
+            <time datetime="2026-10-14">14 October 2026</time>
+          </header>
+          <p class="summary">Find text in the side panel, a map of an entry's headings, and polish throughout.</p>
+          <h3>New</h3>
+          <ul>
+            <li>Find text on the side panel's page, the editor included, with ⌘/Ctrl+F. Enter and Shift+Enter step through the matches.</li>
+            <li>A heading map lists an entry's headings and jumps to the one you choose. It appears once an entry has two headings; open it with O, or from the page header on an entry's page.</li>
+            <li>After an update, the side panel says so once and links to what changed.</li>
+            <li>Two shortcuts on an entry: W widens or narrows the editor, M opens or closes the additional fields and metadata.</li>
+            <li>Settings → Storage shows roughly how much space Lexicora uses.</li>
+            <li>Settings → About links to the store you installed Lexicora from, to leave a review.</li>
+            <li>The Markdown export can leave out archived entries and topics.</li>
+          </ul>
+          <h3>Improved</h3>
+          <ul>
+            <li>Settings → Export gives each format its own card, with its option right below. JSON backups are compact by default.</li>
+            <li>Large counts in lists are shortened, as in 1.2k+.</li>
+            <li>A topic's page always shows how many entries it has, and an archived topic counts its archived entries.</li>
+            <li>Softer shadows on the side panel's top and bottom bars, and the create and edit pages fade out at the bottom edge.</li>
+            <li>The topic form's save button stays in view at the bottom of the panel.</li>
+            <li>The tags and site row of library items is tighter and lines up with the title.</li>
+            <li>On install, the getting-started page no longer points at the toolbar while the browser's Extensions menu is open. On Edge, its pin steps match Chrome's.</li>
+          </ul>
+          <h3>Fixed</h3>
+          <ul>
+            <li>Code blocks in light mode are light, with matching syntax colours, instead of dark.</li>
+            <li>Entry, topic, create and edit pages open at the top, instead of at the list's scroll position.</li>
+            <li>Archiving a topic no longer changes its entry total.</li>
+            <li>On an entry's page, a long link no longer squeezes the site name.</li>
+            <li>A site icon that fails to load is left out of entry items, as a missing one is.</li>
+            <li>The right-click menu no longer shows a stray separator on pages Lexicora cannot capture from.</li>
+          </ul>
+        </article>
+        <article class="release" id="v1.0.2">
+          <header>
+            <h2>Version 1.0.2</h2>
+            <time datetime="2026-10-08">8 October 2026</time>
+          </header>
+          <p class="summary">1.0.1, rebuilt so that Firefox Add-ons can verify it against its source code.</p>
+          <h3>Improved</h3>
+          <ul>
+            <li>Lexicora now builds identically from its published source code, which Firefox Add-ons checks before publishing an update.</li>
+          </ul>
+        </article>
+        <article class="release" id="v1.0.1">
+          <header>
+            <h2>Version 1.0.1</h2>
+            <time datetime="2026-10-08">8 October 2026</time>
+          </header>
+          <p class="summary">Fixes and polish after the first release, and a download about a third smaller.</p>
+          <h3>Improved</h3>
+          <ul>
+            <li>Lexicora is about a third smaller to download and install.</li>
+            <li>Tags on entries and topics use the full width of the row.</li>
+            <li>Two new tips under Settings → Help: what to do when a capture does nothing, and how to use Lexicora on local files.</li>
+            <li>Small spacing fixes in entry and topic items and in Settings.</li>
+          </ul>
+          <h3>Fixed</h3>
+          <ul>
+            <li>⌘/Ctrl+S now saves when creating or editing a topic, as it already did for entries.</li>
+            <li>The last item in a list is no longer covered by the + button once scrolled to the end.</li>
+            <li>Recent entries on the home page, and the current page in the popup, show a globe when a site's icon fails to load, instead of an empty gap.</li>
+            <li>The getting-started page's opening animation no longer stutters right after installing.</li>
+          </ul>
+        </article>
+        <article class="release" id="v1.0.0">
+          <header>
+            <h2>Version 1.0.0</h2>
+            <time datetime="2026-09-26">26 September 2026</time>
+          </header>
+          <p class="summary">The first release: capture, sort and search what you read, entirely on your device.</p>
+          <h3>New</h3>
+          <ul>
+            <li>Capture a page into an editor you can annotate, or bookmark it to keep only its title, link and description.</li>
+            <li>Save from the side panel, the toolbar popup, the right-click menu or a keyboard shortcut — including just the text you have selected.</li>
+            <li>Topics to group what belongs together, tags that cut across them, and pinning, favourites and archiving.</li>
+            <li>Search across titles, tags, descriptions and sites, or narrow it to one site with site:example.com.</li>
+            <li>A rich editor with headings, lists, tables, code blocks with syntax highlighting and callouts. Drag text and images in from the page you are reading.</li>
+            <li>Export a note, a topic or the whole library as Markdown with front matter that Obsidian reads as properties.</li>
+            <li>JSON backup and import, with a choice of what wins when something exists in both.</li>
+            <li>Keyboard shortcuts in the browser and in the side panel.</li>
+            <li>A capture prompt that offers to save a page you have spent time on, in Chromium browsers.</li>
+            <li>A getting-started page on install, and again under Settings → Help.</li>
+          </ul>
+        </article>
+        <p class="callout"><strong>Source of this page.</strong> Mirrors <a href="https://github.com/lexicora/lexicora-extension/blob/main/src/constants/changelog.ts" target="_blank" rel="noopener noreferrer">changelog.ts</a>. Tagged versions are on <a href="https://github.com/lexicora/lexicora-extension/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="/" draggable="false"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
+          <p>Capture, structure and retrieve what you read. Offline, on your device.</p>
+        </div>
+        <nav aria-label="Product">
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#features" draggable="false">Features</a></li>
+            <li><a href="/#keyboard" draggable="false">Shortcuts</a></li>
+            <li><a href="/#install" draggable="false">Install</a></li>
+            <li><a href="/changelog/" draggable="false">Changelog</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy/" draggable="false">Extension privacy</a></li>
+            <li><a href="/privacy/website/" draggable="false">Website privacy</a></li>
+            <li><a href="/license/" draggable="false">Extension licence</a></li>
+            <li><a href="/license/website/" draggable="false">Website licence</a></li>
+            <li><a href="mailto:hello@tgmaurer.dev">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="GitHub">
+          <h2>GitHub</h2>
+          <ul>
+            <li><a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer">Repository</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-note">© 2025–2026 Lexicora / Timothy (@tgmaurer). This website is under the <a href="/license/website/" draggable="false">Lexicora Website License</a>, the extension under the <a href="/license/" draggable="false">Lexicora Extension License</a>. No cookies, no analytics: see the <a href="/privacy/website/" draggable="false">website privacy policy</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
