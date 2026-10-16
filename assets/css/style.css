@@ -597,6 +597,10 @@ kbd {
   box-shadow: var(--shadow-lg);
   cursor: zoom-in;
   transition: border-color 0.2s;
+  /* Where the viewer's Back link lands (/#screenshot-3) when it cannot go
+     back in history: clear of the sticky header, with room to see the
+     heading above. */
+  scroll-margin-top: 7rem;
 }
 
 /* No lift on hover: a thumbnail raised by the pointer would be snapshotted
@@ -743,19 +747,35 @@ kbd {
   font-size: 0.95rem;
 }
 
-/* ---------- Statement ---------- */
+/* ---------- Intro ---------- */
 
-.statement {
-  max-width: 54rem;
-  font-size: clamp(1.5rem, 3.4vw, 2.35rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.3;
-  text-wrap: balance;
+/* The problem in one short line, then the answer at reading size: side by
+   side on wide screens, stacked on narrow ones. */
+.intro {
+  display: grid;
+  gap: 1rem 4rem;
 }
 
-.statement span {
+.intro h2 {
+  max-width: 30rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.intro p {
+  max-width: 36rem;
   color: var(--muted-foreground);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+}
+
+@media (min-width: 56rem) {
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
 }
 
 /* ---------- Feature rows ---------- */

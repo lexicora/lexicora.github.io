@@ -25,6 +25,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/wix-madefor-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/site.js" defer></script>
   <link rel="expect" href="#main" blocking="render">
 
   <script type="application/ld+json">
@@ -43,20 +44,20 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" draggable="false">Skip to content</a>
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="/"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
+      <a class="brand" href="/" draggable="false"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
       <nav class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a href="/changelog/">Changelog</a></li>
+          <li><a href="#features" draggable="false">Features</a></li>
+          <li><a href="#privacy" draggable="false">Privacy</a></li>
+          <li><a href="/changelog/" draggable="false">Changelog</a></li>
           <li><a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer"><span class="icon icon-github" aria-hidden="true"></span>GitHub</a></li>
         </ul>
       </nav>
-      <a class="button button-small header-cta" href="#install">Install</a>
+      <a class="button button-small header-cta" href="#install" draggable="false">Install</a>
     </div>
   </header>
 
@@ -64,7 +65,7 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <a class="pill" href="/changelog/#v1.1.0"><span class="pill-tag">New in 1.1</span>Find in the side panel, and a map of your headings<span class="icon icon-arrow-right" aria-hidden="true"></span></a>
+        <a class="pill" href="/changelog/#v1.1.0" draggable="false"><span class="pill-tag">New in 1.1</span>Find in the side panel, and a map of your headings<span class="icon icon-arrow-right" aria-hidden="true"></span></a>
         <h1>Keep what you read.</h1>
         <p class="lead">Lexicora is an offline web clipper and bookmark manager in your browser's side panel. Capture a page while you read it, sort it into topics, and find it again in seconds.</p>
         <div class="button-row">
@@ -76,11 +77,11 @@
       </div>
 
       <div class="container hero-shot">
-        <a class="frame" id="screenshot-1" href="/screenshots/1/" aria-label="View the full screenshot">
+        <a class="frame" id="screenshot-1" href="/screenshots/1/" aria-label="View the full screenshot" draggable="false">
           <picture>
             <source type="image/avif" srcset="/assets/img/product/capture-800.avif 800w, /assets/img/product/capture-1600.avif 1600w, /assets/img/product/capture-2320.avif 2320w" sizes="(min-width: 74rem) 70rem, calc(100vw - 2rem)">
             <source type="image/jxl" srcset="/assets/img/product/capture-800.jxl 800w, /assets/img/product/capture-1600.jxl 1600w, /assets/img/product/capture-2320.jxl 2320w" sizes="(min-width: 74rem) 70rem, calc(100vw - 2rem)">
-            <img fetchpriority="high" src="/assets/img/product/capture-1600.jpg" srcset="/assets/img/product/capture-800.jpg 800w, /assets/img/product/capture-1600.jpg 1600w, /assets/img/product/capture-2320.jpg 2320w" sizes="(min-width: 74rem) 70rem, calc(100vw - 2rem)" width="2326" height="1460" alt="The Lexicora side panel next to a Wikipedia article, showing topics, entries from the same site and the Capture page button">
+            <img draggable="false" fetchpriority="high" src="/assets/img/product/capture-1600.jpg" srcset="/assets/img/product/capture-800.jpg 800w, /assets/img/product/capture-1600.jpg 1600w, /assets/img/product/capture-2320.jpg 2320w" sizes="(min-width: 74rem) 70rem, calc(100vw - 2rem)" width="2326" height="1460" alt="The Lexicora side panel next to a Wikipedia article, showing topics, entries from the same site and the Capture page button">
           </picture>
         </a>
       </div>
@@ -97,7 +98,10 @@
 
     <!-- The problem -->
     <section class="section container" id="about">
-      <p class="statement">Most of what is worth remembering is read once and lost, in a tab, a docs site or an AI chat. <span>Lexicora keeps it while you are there, cleaned and structured, and makes it findable afterwards. Without changing how you browse.</span></p>
+      <div class="intro">
+        <h2>What is worth remembering is read once, then lost.</h2>
+        <p>It sits in a tab, a docs site or an AI chat until it is gone. Lexicora keeps it while you are there, cleaned and structured, and finds it for you later. You browse exactly as before.</p>
+      </div>
     </section>
 
     <!-- How it works, one row per step, each with the screen it happens on -->
@@ -118,11 +122,11 @@
             <li>Just the selection</li>
           </ul>
         </div>
-        <a class="frame feature-shot" id="screenshot-2" href="/screenshots/2/" aria-label="View the full screenshot">
+        <a class="frame feature-shot" id="screenshot-2" href="/screenshots/2/" aria-label="View the full screenshot" draggable="false">
           <picture>
             <source type="image/avif" srcset="/assets/img/product/editor-800.avif 800w, /assets/img/product/editor-1600.avif 1600w, /assets/img/product/editor-2320.avif 2320w" sizes="(min-width: 60rem) 42rem, calc(100vw - 2rem)">
             <source type="image/jxl" srcset="/assets/img/product/editor-800.jxl 800w, /assets/img/product/editor-1600.jxl 1600w, /assets/img/product/editor-2320.jxl 2320w" sizes="(min-width: 60rem) 42rem, calc(100vw - 2rem)">
-            <img loading="lazy" src="/assets/img/product/editor-1600.jpg" srcset="/assets/img/product/editor-800.jpg 800w, /assets/img/product/editor-1600.jpg 1600w, /assets/img/product/editor-2320.jpg 2320w" sizes="(min-width: 60rem) 42rem, calc(100vw - 2rem)" width="2329" height="1461" alt="A React Router docs page captured into the editor, with its headings, lists, callout and code block">
+            <img draggable="false" loading="lazy" src="/assets/img/product/editor-1600.jpg" srcset="/assets/img/product/editor-800.jpg 800w, /assets/img/product/editor-1600.jpg 1600w, /assets/img/product/editor-2320.jpg 2320w" sizes="(min-width: 60rem) 42rem, calc(100vw - 2rem)" width="2329" height="1461" alt="A React Router docs page captured into the editor, with its headings, lists, callout and code block">
           </picture>
         </a>
       </article>
@@ -134,11 +138,11 @@
           <p>Topics group what belongs together. Tags cut across them. Pin what you return to, archive what you are done with, favourite what matters.</p>
           <p>The structure stays flat on purpose: topics hold entries, and nothing nests deeper, so there is never a folder to dig through.</p>
         </div>
-        <a class="frame feature-shot" id="screenshot-3" href="/screenshots/3/" aria-label="View the full screenshot">
+        <a class="frame feature-shot" id="screenshot-3" href="/screenshots/3/" aria-label="View the full screenshot" draggable="false">
           <picture>
             <source type="image/avif" srcset="/assets/img/product/library-536.avif 536w, /assets/img/product/library-1072.avif 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)">
             <source type="image/jxl" srcset="/assets/img/product/library-536.jxl 536w, /assets/img/product/library-1072.jxl 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)">
-            <img loading="lazy" src="/assets/img/product/library-1072.jpg" srcset="/assets/img/product/library-536.jpg 536w, /assets/img/product/library-1072.jpg 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)" width="1072" height="1450" alt="The library's entry list with tags, site icons, pins and favourites">
+            <img draggable="false" loading="lazy" src="/assets/img/product/library-1072.jpg" srcset="/assets/img/product/library-536.jpg 536w, /assets/img/product/library-1072.jpg 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)" width="1072" height="1450" alt="The library's entry list with tags, site icons, pins and favourites">
           </picture>
         </a>
       </article>
@@ -150,11 +154,11 @@
           <p>Search runs over titles, tags, descriptions, site names and dates. Type <code>site:react.dev</code> to stay on one site, alone or with words after it. Press <kbd>/</kbd> anywhere in the panel to start.</p>
           <p>And when you are back on a site, the side panel already shows what you saved from it.</p>
         </div>
-        <a class="frame feature-shot" id="screenshot-4" href="/screenshots/4/" aria-label="View the full screenshot">
+        <a class="frame feature-shot" id="screenshot-4" href="/screenshots/4/" aria-label="View the full screenshot" draggable="false">
           <picture>
             <source type="image/avif" srcset="/assets/img/product/search-536.avif 536w, /assets/img/product/search-1072.avif 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)">
             <source type="image/jxl" srcset="/assets/img/product/search-536.jxl 536w, /assets/img/product/search-1072.jxl 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)">
-            <img loading="lazy" src="/assets/img/product/search-1072.jpg" srcset="/assets/img/product/search-536.jpg 536w, /assets/img/product/search-1072.jpg 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)" width="1072" height="1240" alt="Library search narrowed to one site with site:react.dev, showing three entries from react.dev">
+            <img draggable="false" loading="lazy" src="/assets/img/product/search-1072.jpg" srcset="/assets/img/product/search-536.jpg 536w, /assets/img/product/search-1072.jpg 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)" width="1072" height="1240" alt="Library search narrowed to one site with site:react.dev, showing three entries from react.dev">
           </picture>
         </a>
       </article>
@@ -166,11 +170,11 @@
           <p>Export a note, a topic or the whole library as Markdown, with front matter that Obsidian reads as properties. Or make a JSON backup and import it again, choosing what wins when something exists in both.</p>
           <p>Your library is never locked in, and never anywhere but with you.</p>
         </div>
-        <a class="frame feature-shot" id="screenshot-5" href="/screenshots/5/" aria-label="View the full screenshot">
+        <a class="frame feature-shot" id="screenshot-5" href="/screenshots/5/" aria-label="View the full screenshot" draggable="false">
           <picture>
             <source type="image/avif" srcset="/assets/img/product/export-536.avif 536w, /assets/img/product/export-1072.avif 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)">
             <source type="image/jxl" srcset="/assets/img/product/export-536.jxl 536w, /assets/img/product/export-1072.jxl 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)">
-            <img loading="lazy" src="/assets/img/product/export-1072.jpg" srcset="/assets/img/product/export-536.jpg 536w, /assets/img/product/export-1072.jpg 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)" width="1072" height="880" alt="The export page, offering a JSON backup or a Markdown archive">
+            <img draggable="false" loading="lazy" src="/assets/img/product/export-1072.jpg" srcset="/assets/img/product/export-536.jpg 536w, /assets/img/product/export-1072.jpg 1072w" sizes="(min-width: 60rem) 26rem, calc(100vw - 2rem)" width="1072" height="880" alt="The export page, offering a JSON backup or a Markdown archive">
           </picture>
         </a>
       </article>
@@ -255,7 +259,7 @@
             <h2>It is yours.</h2>
             <p>Lexicora keeps everything you capture on your own computer. It has no accounts, no servers and no analytics, and it sends nothing about you or your browsing anywhere.</p>
             <div class="button-row">
-              <a class="button" href="/privacy/">Read the privacy policy</a>
+              <a class="button" href="/privacy/" draggable="false">Read the privacy policy</a>
             </div>
           </div>
           <ul class="checklist">
@@ -305,7 +309,7 @@
             <li>Markdown export, and JSON backup with import</li>
             <li>Find in the panel and a heading map</li>
           </ul>
-          <a class="arrow-link" href="/changelog/">What changed in each release<span class="icon icon-arrow-right" aria-hidden="true"></span></a>
+          <a class="arrow-link" href="/changelog/" draggable="false">What changed in each release<span class="icon icon-arrow-right" aria-hidden="true"></span></a>
         </div>
         <div class="roadmap-col">
           <span class="badge">Planned</span>
@@ -377,23 +381,24 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a class="brand" href="/"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
+          <a class="brand" href="/" draggable="false"><span class="logo-mark" aria-hidden="true"></span>Lexicora</a>
           <p>Capture, structure and retrieve what you read. Offline, on your device.</p>
         </div>
         <nav aria-label="Product">
           <h2>Product</h2>
           <ul>
-            <li><a href="/#features">Features</a></li>
-            <li><a href="/#keyboard">Shortcuts</a></li>
-            <li><a href="/#install">Install</a></li>
-            <li><a href="/changelog/">Changelog</a></li>
+            <li><a href="/#features" draggable="false">Features</a></li>
+            <li><a href="/#keyboard" draggable="false">Shortcuts</a></li>
+            <li><a href="/#install" draggable="false">Install</a></li>
+            <li><a href="/changelog/" draggable="false">Changelog</a></li>
           </ul>
         </nav>
         <nav aria-label="Legal">
           <h2>Legal</h2>
           <ul>
-            <li><a href="/privacy/">Privacy policy</a></li>
-            <li><a href="/license/">Licence</a></li>
+            <li><a href="/privacy/" draggable="false">Extension privacy</a></li>
+            <li><a href="/privacy/website/" draggable="false">Website privacy</a></li>
+            <li><a href="/license/" draggable="false">Licence</a></li>
             <li><a href="mailto:hello@tgmaurer.dev">Contact</a></li>
           </ul>
         </nav>
@@ -407,7 +412,7 @@
           </ul>
         </nav>
       </div>
-      <p class="footer-note">© 2025–2026 Lexicora / Timothy (@tgmaurer). Used under the <a href="/license/">Lexicora Extension License</a>. This site has no cookies, no analytics and no JavaScript.</p>
+      <p class="footer-note">© 2025–2026 Lexicora / Timothy (@tgmaurer). Used under the <a href="/license/" draggable="false">Lexicora Extension License</a>. This site sets no cookies and has no analytics; see the <a href="/privacy/website/" draggable="false">website privacy policy</a>.</p>
     </div>
   </footer>
 </body>

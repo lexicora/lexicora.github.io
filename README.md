@@ -2,7 +2,7 @@
 
 Homepage for the [Lexicora browser extension](https://github.com/lexicora/lexicora-extension): the landing page, store links, privacy policy, licence and changelog.
 
-Plain HTML and CSS, no JavaScript, no build step, no dependencies. Light and dark follow the system via `prefers-color-scheme`, using the same colour tokens, fonts (Wix Madefor Text, JetBrains Mono) and logo as the extension.
+Plain HTML and CSS, no build step, no dependencies. One small script, `assets/js/site.js`, smooths a few things (below); every page works without it. Light and dark follow the system via `prefers-color-scheme`, using the same colour tokens, fonts (Wix Madefor Text, JetBrains Mono) and logo as the extension.
 
 Page navigation is smoothed with cross-document view transitions (`@view-transition` in the CSS): the regular cross-fade, the same on every page, with the header held in place. Jumps within a page scroll smoothly; arriving on a page at an anchor does not, since smooth scrolling is switched off while a transition runs (`html:active-view-transition`). Browsers without support just navigate normally, as do users who prefer reduced motion.
 
@@ -11,12 +11,14 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 | Path | What |
 | --- | --- |
 | `index.html` | Landing page: hero, the four steps (capture, organise, find, keep) each beside the screen it happens on, details, shortcuts, privacy, principles, roadmap, install |
-| `privacy/` | Privacy policy, mirrors `PRIVACY.md` in the extension repository |
+| `privacy/` | The extension's privacy policy, mirrors `PRIVACY.md` in the extension repository |
+| `privacy/website/` | This website's own privacy policy: no cookies or analytics, GitHub Pages' IP logging, the script's session storage. Written for the site, not mirrored |
 | `license/` | Lexicora Extension License, mirrors `LICENSE.txt` |
 | `changelog/` | Release notes, mirrors `src/constants/changelog.ts` |
 | `screenshots/1/` to `5/` | One viewer page per screenshot; back and previous/next sit at the top right |
 | `404.html` | Not-found page (GitHub Pages serves it automatically) |
 | `assets/css/style.css` | All styling |
+| `assets/js/site.js` | The only script: the homepage logo scrolls to the top, and the screenshot viewer's Back goes back in history (so the homepage comes back exactly where it was), Previous and Next replace the viewer page, and ←, → and Esc work. It keeps one note in `sessionStorage`, described in the website privacy policy; change that page if the script starts keeping anything else |
 | `assets/img/product/` | The landing page's product shots: the browser window or side panel cut out of each store screenshot, without its headline. AVIF, JPEG XL and JPEG, made by `scripts/product-shots.sh` |
 | `assets/img/screenshots/` | The store screenshots themselves, from `docs/store/screenshots` at 800, 1600 and 2400 px, as JPEG XL with a JPEG fallback. Used by the viewer pages |
 | `assets/img/og.jpg` | The 1200 × 630 social preview card, rendered from `scripts/og.html` |
@@ -69,4 +71,4 @@ sips -s format jpeg -s formatOptions 82 -Z 1600 2.png --out assets/img/screensho
 sips -s format jpeg -s formatOptions 85 /tmp/og.png --out assets/img/og.jpg
 ```
 
-External links carry `target="_blank" rel="noopener noreferrer"`; keep that when adding links.
+External links carry `target="_blank" rel="noopener noreferrer"`; keep that when adding links. Internal links (`/…` and `#…`) carry `draggable="false"`, as do the images inside them, so a click that moves a little is not taken for a drag.
