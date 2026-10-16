@@ -17,7 +17,9 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/wix-madefor-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="expect" href="#main" blocking="render">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,7 +33,7 @@
           <li><a href="#how-it-works">How it works</a></li>
           <li><a href="#install">Install</a></li>
           <li><a href="/privacy/">Privacy</a></li>
-          <li><a href="https://github.com/lexicora/lexicora-extension">GitHub</a></li>
+          <li><a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </nav>
     </div>
@@ -44,20 +46,18 @@
       <h1>Keep what you read.</h1>
       <p class="lead">Lexicora captures any page into your own library, right beside it. Sort it into topics, search it later. It stays on your device: no account, no server, no analytics.</p>
       <div class="button-row">
-        <a class="button" href="https://chromewebstore.google.com/detail/ainigcpoeibgglaldkjippcccaicnjjd">Add to Chrome</a>
-        <a class="button" href="https://addons.mozilla.org/addon/lexicora/">Add to Firefox</a>
-        <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl">Add to Edge</a>
+        <a class="button" href="https://chromewebstore.google.com/detail/ainigcpoeibgglaldkjippcccaicnjjd" target="_blank" rel="noopener noreferrer"><span class="icon icon-chrome" aria-hidden="true"></span>Add to Chrome</a>
+        <a class="button" href="https://addons.mozilla.org/addon/lexicora/" target="_blank" rel="noopener noreferrer"><span class="icon icon-firefox" aria-hidden="true"></span>Add to Firefox</a>
+        <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl" target="_blank" rel="noopener noreferrer"><span class="icon icon-edge" aria-hidden="true"></span>Add to Edge</a>
       </div>
-      <p class="fineprint">Free for non-commercial use · <a href="https://github.com/lexicora/lexicora-extension">source-available on GitHub</a></p>
+      <p class="fineprint">Free for non-commercial use · <a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer">source-available on GitHub</a></p>
 
-      <div class="screenshot-frame">
-        <img
-          src="/assets/img/screenshots/1-1600.jpg"
-          srcset="/assets/img/screenshots/1-800.jpg 800w, /assets/img/screenshots/1-1600.jpg 1600w"
-          sizes="(min-width: 62rem) 62rem, 100vw"
-          width="1600" height="1200"
-          alt="The Lexicora side panel next to a Wikipedia article, showing topics, entries from the same site and the Capture page button">
-      </div>
+      <a class="shot" href="/screenshots/1/" aria-label="View this screenshot larger">
+          <picture>
+            <source type="image/jxl" srcset="/assets/img/screenshots/1-800.jxl 800w, /assets/img/screenshots/1-1600.jxl 1600w, /assets/img/screenshots/1-2400.jxl 2400w" sizes="(min-width: 62rem) 62rem, 100vw">
+            <img fetchpriority="high" decoding="sync" src="/assets/img/screenshots/1-1600.jpg" srcset="/assets/img/screenshots/1-800.jpg 800w, /assets/img/screenshots/1-1600.jpg 1600w, /assets/img/screenshots/1-2400.jpg 2400w" sizes="(min-width: 62rem) 62rem, 100vw" width="1600" height="1200" alt="The Lexicora side panel next to a Wikipedia article, showing topics, entries from the same site and the Capture page button">
+          </picture>
+        </a>
 
       <ul class="facts" aria-label="At a glance">
         <li><strong>No account</strong><span>Nothing to sign up for</span></li>
@@ -175,33 +175,45 @@
       <ul class="gallery">
         <li>
           <figure>
-            <a href="/assets/img/screenshots/2-1600.jpg">
-              <img loading="lazy" src="/assets/img/screenshots/2-800.jpg" srcset="/assets/img/screenshots/2-800.jpg 800w, /assets/img/screenshots/2-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="A React Router docs page captured into the editor, with its headings, lists, callout and code block">
-            </a>
+            <a class="shot" id="screenshot-2" href="/screenshots/2/">
+            <picture>
+            <source type="image/jxl" srcset="/assets/img/screenshots/2-800.jxl 800w, /assets/img/screenshots/2-1600.jxl 1600w, /assets/img/screenshots/2-2400.jxl 2400w" sizes="(min-width: 46rem) 35rem, 100vw">
+            <img decoding="sync" src="/assets/img/screenshots/2-1600.jpg" srcset="/assets/img/screenshots/2-800.jpg 800w, /assets/img/screenshots/2-1600.jpg 1600w, /assets/img/screenshots/2-2400.jpg 2400w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="A React Router docs page captured into the editor, with its headings, lists, callout and code block">
+          </picture>
+          </a>
             <figcaption>A captured page in the editor, with its headings, lists, callout and code block.</figcaption>
           </figure>
         </li>
         <li>
           <figure>
-            <a href="/assets/img/screenshots/3-1600.jpg">
-              <img loading="lazy" src="/assets/img/screenshots/3-800.jpg" srcset="/assets/img/screenshots/3-800.jpg 800w, /assets/img/screenshots/3-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="The library's entry list with tags, favicons, pins and favourites">
-            </a>
+            <a class="shot" id="screenshot-3" href="/screenshots/3/">
+            <picture>
+            <source type="image/jxl" srcset="/assets/img/screenshots/3-800.jxl 800w, /assets/img/screenshots/3-1600.jxl 1600w, /assets/img/screenshots/3-2400.jxl 2400w" sizes="(min-width: 46rem) 35rem, 100vw">
+            <img decoding="sync" src="/assets/img/screenshots/3-1600.jpg" srcset="/assets/img/screenshots/3-800.jpg 800w, /assets/img/screenshots/3-1600.jpg 1600w, /assets/img/screenshots/3-2400.jpg 2400w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="The library's entry list with tags, favicons, pins and favourites">
+          </picture>
+          </a>
             <figcaption>The library: tags, site icons, pins and favourites.</figcaption>
           </figure>
         </li>
         <li>
           <figure>
-            <a href="/assets/img/screenshots/4-1600.jpg">
-              <img loading="lazy" src="/assets/img/screenshots/4-800.jpg" srcset="/assets/img/screenshots/4-800.jpg 800w, /assets/img/screenshots/4-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="Library search narrowed to one site with site:react.dev">
-            </a>
+            <a class="shot" id="screenshot-4" href="/screenshots/4/">
+            <picture>
+            <source type="image/jxl" srcset="/assets/img/screenshots/4-800.jxl 800w, /assets/img/screenshots/4-1600.jxl 1600w, /assets/img/screenshots/4-2400.jxl 2400w" sizes="(min-width: 46rem) 35rem, 100vw">
+            <img decoding="sync" src="/assets/img/screenshots/4-1600.jpg" srcset="/assets/img/screenshots/4-800.jpg 800w, /assets/img/screenshots/4-1600.jpg 1600w, /assets/img/screenshots/4-2400.jpg 2400w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="Library search narrowed to one site with site:react.dev">
+          </picture>
+          </a>
             <figcaption>Search narrowed to a single site with <code>site:react.dev</code>.</figcaption>
           </figure>
         </li>
         <li>
           <figure>
-            <a href="/assets/img/screenshots/5-1600.jpg">
-              <img loading="lazy" src="/assets/img/screenshots/5-800.jpg" srcset="/assets/img/screenshots/5-800.jpg 800w, /assets/img/screenshots/5-1600.jpg 1600w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="The export page, offering a JSON backup or a Markdown archive">
-            </a>
+            <a class="shot" id="screenshot-5" href="/screenshots/5/">
+            <picture>
+            <source type="image/jxl" srcset="/assets/img/screenshots/5-800.jxl 800w, /assets/img/screenshots/5-1600.jxl 1600w, /assets/img/screenshots/5-2400.jxl 2400w" sizes="(min-width: 46rem) 35rem, 100vw">
+            <img decoding="sync" src="/assets/img/screenshots/5-1600.jpg" srcset="/assets/img/screenshots/5-800.jpg 800w, /assets/img/screenshots/5-1600.jpg 1600w, /assets/img/screenshots/5-2400.jpg 2400w" sizes="(min-width: 46rem) 35rem, 100vw" width="1600" height="1200" alt="The export page, offering a JSON backup or a Markdown archive">
+          </picture>
+          </a>
             <figcaption>Export as a JSON backup or a Markdown archive.</figcaption>
           </figure>
         </li>
@@ -222,7 +234,7 @@
         <li class="card"><h3>Keyboard-driven</h3><p>Minimal mouse usage.</p></li>
         <li class="card"><h3>Browser-native</h3><p>Works where knowledge is consumed.</p></li>
         <li class="card"><h3>Local-first</h3><p>The library lives on your device. Version 1 works fully offline and sends nothing anywhere.</p></li>
-        <li class="card"><h3>AI-optional</h3><p>Useful without AI, powerful with it.</p></li>
+        <li class="card"><h3>AI-optional</h3><p>Useful without AI. AI features are currently disabled, and nothing in this version uses them.</p></li>
       </ul>
     </section>
 
@@ -280,17 +292,17 @@
         <li class="store">
           <h3>Chrome</h3>
           <p>The Chrome Web Store version, with the capture suggestion.</p>
-          <a class="button" href="https://chromewebstore.google.com/detail/ainigcpoeibgglaldkjippcccaicnjjd">Chrome Web Store</a>
+          <a class="button" href="https://chromewebstore.google.com/detail/ainigcpoeibgglaldkjippcccaicnjjd" target="_blank" rel="noopener noreferrer"><span class="icon icon-chrome" aria-hidden="true"></span>Chrome Web Store</a>
         </li>
         <li class="store">
           <h3>Edge</h3>
           <p>The Microsoft Edge Add-ons version, with the capture suggestion.</p>
-          <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl">Edge Add-ons</a>
+          <a class="button" href="https://microsoftedge.microsoft.com/addons/detail/lexicora/cedcfjhhgnnhicanijilpadchcfkbjgl" target="_blank" rel="noopener noreferrer"><span class="icon icon-edge" aria-hidden="true"></span>Edge Add-ons</a>
         </li>
         <li class="store">
           <h3>Firefox</h3>
           <p>Firefox Add-ons (AMO). Builds are reproducible from the published source.</p>
-          <a class="button" href="https://addons.mozilla.org/addon/lexicora/">Firefox Add-ons</a>
+          <a class="button" href="https://addons.mozilla.org/addon/lexicora/" target="_blank" rel="noopener noreferrer"><span class="icon icon-firefox" aria-hidden="true"></span>Firefox Add-ons</a>
         </li>
       </ul>
     </section>
@@ -312,6 +324,7 @@
             <li>Search with a <code>site:</code> filter</li>
             <li>Markdown export and JSON backup with import</li>
             <li>Keyboard shortcuts, find in page, heading map</li>
+            <li>No AI: AI features are currently disabled</li>
           </ul>
           <p><a href="/changelog/">What changed in each release →</a></p>
         </div>
@@ -319,12 +332,12 @@
           <span class="badge">Planned</span>
           <h3>Beyond version 1</h3>
           <ul class="plain-list">
-            <li>AI-assisted summarisation and refinement</li>
+            <li>AI-assisted summarisation and refinement (AI is currently disabled in Lexicora)</li>
             <li>Sync across devices, and a web app for expanded views and management</li>
             <li>Light sharing and collaboration</li>
             <li>A standalone windowed app, which is built but parked</li>
           </ul>
-          <p><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md">Read the full roadmap on GitHub ↗</a></p>
+          <p><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener noreferrer">Read the full roadmap on GitHub ↗</a></p>
         </div>
         <div class="card">
           <span class="badge">Not the goal</span>
@@ -342,13 +355,13 @@
         <p>Lexicora is source-available under a non-commercial licence and developed in the open. Found a bug, or want something changed? Tell us.</p>
       </div>
       <ul class="link-grid">
-        <li><a href="https://github.com/lexicora/lexicora-extension"><strong>Source code</strong><span>The lexicora-extension repository</span></a></li>
-        <li><a href="https://github.com/lexicora/lexicora-extension/issues/new/choose"><strong>Report a bug or request a feature</strong><span>Open an issue</span></a></li>
-        <li><a href="https://github.com/lexicora/lexicora-extension/issues"><strong>Issues</strong><span>Browse what is open and planned</span></a></li>
-        <li><a href="https://github.com/lexicora/lexicora-extension/releases"><strong>Releases</strong><span>Tagged versions, v1.0.0 to v1.1.0</span></a></li>
-        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/README.md"><strong>README</strong><span>Overview, build and development notes</span></a></li>
-        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md"><strong>Roadmap</strong><span>The plan and the decisions behind it</span></a></li>
-        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/store-listing.md"><strong>Store listing and permissions</strong><span>Why each permission is needed</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer"><strong>Source code</strong><span>The lexicora-extension repository</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/issues/new/choose" target="_blank" rel="noopener noreferrer"><strong>Report a bug or request a feature</strong><span>Open an issue</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/issues" target="_blank" rel="noopener noreferrer"><strong>Issues</strong><span>Browse what is open and planned</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/releases" target="_blank" rel="noopener noreferrer"><strong>Releases</strong><span>Tagged versions, v1.0.0 to v1.1.0</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/README.md" target="_blank" rel="noopener noreferrer"><strong>README</strong><span>Overview, build and development notes</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener noreferrer"><strong>Roadmap</strong><span>The plan and the decisions behind it</span></a></li>
+        <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/store-listing.md" target="_blank" rel="noopener noreferrer"><strong>Store listing and permissions</strong><span>Why each permission is needed</span></a></li>
         <li><a class="internal" href="/privacy/"><strong>Privacy policy</strong><span>Also on this site</span></a></li>
         <li><a class="internal" href="/license/"><strong>Licence</strong><span>Also on this site</span></a></li>
       </ul>
@@ -364,12 +377,12 @@
       <div class="table-wrap">
         <table>
           <tbody>
-            <tr><th scope="row">Extension framework</th><td><a href="https://wxt.dev">WXT</a> (Chrome MV3 / Firefox MV2)</td></tr>
-            <tr><th scope="row">UI</th><td><a href="https://react.dev">React 19</a>, <a href="https://tailwindcss.com">Tailwind CSS v4</a>, <a href="https://ui.shadcn.com/">shadcn/ui</a></td></tr>
-            <tr><th scope="row">Editor</th><td><a href="https://www.blocknotejs.org/">BlockNote</a></td></tr>
-            <tr><th scope="row">Local database</th><td><a href="https://rxdb.info/">RxDB</a> on <a href="https://dexie.org/">Dexie</a>, in IndexedDB</td></tr>
-            <tr><th scope="row">Content parsing</th><td>Its own DOM parser and <a href="https://github.com/cure53/DOMPurify">DOMPurify</a></td></tr>
-            <tr><th scope="row">Language and tooling</th><td><a href="https://www.typescriptlang.org/">TypeScript</a>, <a href="https://bun.sh">Bun</a>, <a href="https://vitest.dev/">Vitest</a></td></tr>
+            <tr><th scope="row">Extension framework</th><td><a href="https://wxt.dev" target="_blank" rel="noopener noreferrer">WXT</a> (Chrome MV3 / Firefox MV2)</td></tr>
+            <tr><th scope="row">UI</th><td><a href="https://react.dev" target="_blank" rel="noopener noreferrer">React 19</a>, <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS v4</a>, <a href="https://ui.shadcn.com/" target="_blank" rel="noopener noreferrer">shadcn/ui</a></td></tr>
+            <tr><th scope="row">Editor</th><td><a href="https://www.blocknotejs.org/" target="_blank" rel="noopener noreferrer">BlockNote</a></td></tr>
+            <tr><th scope="row">Local database</th><td><a href="https://rxdb.info/" target="_blank" rel="noopener noreferrer">RxDB</a> on <a href="https://dexie.org/" target="_blank" rel="noopener noreferrer">Dexie</a>, in IndexedDB</td></tr>
+            <tr><th scope="row">Content parsing</th><td>Its own DOM parser and <a href="https://github.com/cure53/DOMPurify" target="_blank" rel="noopener noreferrer">DOMPurify</a></td></tr>
+            <tr><th scope="row">Language and tooling</th><td><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a>, <a href="https://bun.sh" target="_blank" rel="noopener noreferrer">Bun</a>, <a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer">Vitest</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -403,10 +416,10 @@
         <nav aria-label="GitHub">
           <h2>GitHub</h2>
           <ul>
-            <li><a href="https://github.com/lexicora/lexicora-extension">Repository</a></li>
-            <li><a href="https://github.com/lexicora/lexicora-extension/issues">Issues</a></li>
-            <li><a href="https://github.com/lexicora/lexicora-extension/releases">Releases</a></li>
-            <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md">Roadmap</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension" target="_blank" rel="noopener noreferrer">Repository</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+            <li><a href="https://github.com/lexicora/lexicora-extension/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
           </ul>
         </nav>
       </div>
