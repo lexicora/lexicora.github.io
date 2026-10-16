@@ -288,6 +288,7 @@ kbd {
 .icon-copy { --icon: url("/assets/icons/ui/copy.svg"); }
 .icon-eye-off { --icon: url("/assets/icons/ui/eye-off.svg"); }
 .icon-file-down { --icon: url("/assets/icons/ui/file-down.svg"); }
+.icon-mail { --icon: url("/assets/icons/ui/mail.svg"); }
 .icon-map { --icon: url("/assets/icons/ui/map.svg"); }
 .icon-pen-line { --icon: url("/assets/icons/ui/pen-line.svg"); }
 .icon-scan-text { --icon: url("/assets/icons/ui/scan-text.svg"); }
@@ -1127,6 +1128,17 @@ kbd {
 
 .link-list li + li {
   border-top: 1px solid var(--border);
+}
+
+/* On a prose page (Support), the list keeps its own look rather than the
+   prose list's indent and spacing. */
+.prose .link-list {
+  margin-bottom: 1rem;
+  padding: 0;
+}
+
+.prose .link-list li + li {
+  margin-top: 0;
 }
 
 .link-list a {
