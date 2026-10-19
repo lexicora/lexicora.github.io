@@ -25,6 +25,10 @@ Page navigation is smoothed with cross-document view transitions (`@view-transit
 | `assets/img/product/` | The landing page's product shots: the browser window or side panel cut out of each store screenshot, without its headline. AVIF, JPEG XL and JPEG, made by `scripts/product-shots.sh` |
 | `assets/img/screenshots/` | The store screenshots themselves, from `docs/store/screenshots` at 800, 1600 and 2400 px, as AVIF, JPEG XL and JPEG. Used by the viewer pages, which preload the AVIF and ask Chrome and Edge (speculation rules) to prerender the neighbouring viewer pages; the homepage prerenders a viewer page when a screenshot is hovered |
 | `assets/img/og.jpg` | The 1200 × 630 social preview card, rendered from `scripts/og.html` |
+| `favicon.svg` | The browser tab icon: the extension's logo on its rounded white square |
+| `favicon-48x48.png`, `favicon-96x96.png` | Raster favicons for Google Search, which does not take SVG and crops favicons to a circle. Rendered from `scripts/favicon.svg`, where the shards are scaled to 72 % so their corners stay inside the circle. Linked on every page beside `favicon.svg`; Chrome and Edge keep the SVG for the tab as long as no linked icon declares 16 or 32 px, which they would take instead |
+| `favicon.ico` | The same icon at 16, 32 and 48 px, for crawlers and tools that ask for `/favicon.ico` without reading the page. Deliberately not linked, for the reason above |
+| `apple-touch-icon.png` | The 180 px home-screen icon. iOS masks it to a rounded square, so `scripts/apple-touch-icon.svg` scales the shards to 84 %: less inset than the circle needs |
 | `assets/icons/` | Chrome, Edge, Firefox and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0). The brands are trademarks of their owners |
 | `assets/icons/ui/` | Interface icons from [Lucide](https://lucide.dev) (ISC, licence alongside), the set the extension uses, exported from its `lucide-react` |
 | `scripts/` | Tools for regenerating images, not part of the site |
@@ -77,5 +81,7 @@ sips -s format jpeg -s formatOptions 82 -Z 1600 2.png --out assets/img/screensho
   --screenshot=/tmp/og.png "file://$PWD/scripts/og.html"
 sips -s format jpeg -s formatOptions 85 /tmp/og.png --out assets/img/og.jpg
 ```
+
+**Favicons.** When the logo changes, update `favicon.svg`, `scripts/favicon.svg` and `scripts/apple-touch-icon.svg` (the same paths, scaled inside a margin), then run `scripts/favicon.sh` from the repository root. It renders `favicon.ico`, `favicon-48x48.png`, `favicon-96x96.png` and `apple-touch-icon.png` with Chrome and `sips`. Keep their URLs stable: Google recrawls favicons slowly.
 
 External links carry `target="_blank" rel="noopener noreferrer"`; keep that when adding links. Internal links (`/…` and `#…`) carry `draggable="false"`, as do the images inside them, so a click that moves a little is not taken for a drag.
