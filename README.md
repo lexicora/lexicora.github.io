@@ -63,7 +63,7 @@ Needs `cjxl` and `avifenc` (`brew install jpeg-xl libavif`); `sips` comes with m
 scripts/product-shots.sh ../lexicora-extension
 ```
 
-The crop boxes are at the bottom of the script. They assume the current layout of the store screenshots (window or panel in the same place), so check them when the screenshots are recomposed. Each `<picture>` offers AVIF, then JPEG XL, then JPEG.
+The crop boxes are at the bottom of the script. They assume the current layout of the store screenshots (window or panel in the same place), so check them when the screenshots are recomposed. Each `<picture>` offers AVIF, then JPEG XL, then JPEG. When a box changes size, update its `<img>` in `index.html` to match: `width`, `height` and, on the lazy-loaded shots, the inline `aspect-ratio`. Chrome's Issues panel reports a lazy image whose CSS height is `auto` ("Lazy-loaded images should have explicit dimensions") unless the ratio is set in CSS, even though it already takes it from the attributes.
 
 **Store screenshots** (the viewer pages). From the 2400 px originals:
 
